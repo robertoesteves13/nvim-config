@@ -3,11 +3,18 @@ require('plugins')
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 
+vim.cmd([[set guifont=Fira\ Code:h11]])
+
 vim.g.mapleader = " "
 
 vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
 
+vim.api.nvim_set_keymap('n', '<leader>bw', ':bw<CR>', { noremap = true, silent = true})
+
 vim.api.nvim_set_var('completeopt', 'menu,menuone,noselect')
+
+vim.o.hidden = true
+vim.o.confirm = true
 
 vim.bo.tabstop = 4
 vim.bo.shiftwidth = 4
@@ -75,4 +82,15 @@ lsp_installer.on_server_ready(function(server)
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
+local params = { noremap = true, silent = true }
+
+vim.api.nvim_buf_set_keymap('n', '', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', params)
+vim.api.nvim_buf_set_keymap('n', '', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', params)
+vim.api.nvim_buf_set_keymap('n', '', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', params)
+
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', params)
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', params)
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', params)
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', params)
 

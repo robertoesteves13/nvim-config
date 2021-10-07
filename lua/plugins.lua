@@ -28,5 +28,10 @@ return require('packer').startup(function()
 	use { "shadmansaleh/lualine.nvim" }
 	use { "romgrk/barbar.nvim" }
 	use { "ChristianChiarulli/dashboard-nvim" }
-	use { "nvim-telescope/telescope.nvim" }
+
+	use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+	}
+
 end)
