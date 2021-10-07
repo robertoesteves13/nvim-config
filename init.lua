@@ -68,6 +68,8 @@ local cmp = require'cmp'
     }
   })
 
+local clangd = require('lsp/clangd')
+
 lsp_installer.on_server_ready(function(server)
     local opts = {
 	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -77,6 +79,9 @@ lsp_installer.on_server_ready(function(server)
     -- if server.name == "tsserver" then
     --     opts.root_dir = function() ... end
     -- end
+    if server.name == "clangd" then
+	    clangd.setkeymap()
+    end
 
     -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
     server:setup(opts)
