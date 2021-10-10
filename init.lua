@@ -16,9 +16,9 @@ vim.api.nvim_set_var('completeopt', 'menu,menuone,noselect')
 vim.o.hidden = true
 vim.o.confirm = true
 
-vim.bo.tabstop = 4
-vim.bo.shiftwidth = 4
-vim.bo.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -46,6 +46,7 @@ local cmp = require'cmp'
       end,
     },
     mapping = {
+      ['<Tab>'] = cmp.mapping.select_next_item(),
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
@@ -90,9 +91,9 @@ end)
 
 local params = { noremap = true, silent = true }
 
-vim.api.nvim_buf_set_keymap('n', '', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', params)
-vim.api.nvim_buf_set_keymap('n', '', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', params)
-vim.api.nvim_buf_set_keymap('n', '', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', params)
+vim.api.nvim_set_keymap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', params)
+vim.api.nvim_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', params)
+vim.api.nvim_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', params)
 
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', params)
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', params)
