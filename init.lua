@@ -62,10 +62,14 @@ local cmp = require'cmp'
       -- For luasnip user.
       { name = 'luasnip' },
 
+      { name = 'cmp_tabnine' },
       -- For ultisnips user.
       -- { name = 'ultisnips' },
 
       { name = 'buffer' },
+    },
+    formatting = {
+      format = require('lspkind').cmp_format({with_text = false, maxwidth = 50})
     }
   })
 
@@ -88,12 +92,6 @@ lsp_installer.on_server_ready(function(server)
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
-
-require'cmp'.setup {
- sources = {
- 	{ name = 'cmp_tabnine' },
- },
-}
 
 local params = { noremap = true, silent = true }
 
