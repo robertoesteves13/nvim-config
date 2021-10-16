@@ -34,4 +34,6 @@ return require('packer').startup(function()
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+
 end)

@@ -1,4 +1,4 @@
-require('plugins')
+  require('plugins')
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
@@ -88,6 +88,12 @@ lsp_installer.on_server_ready(function(server)
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
+require'cmp'.setup {
+ sources = {
+ 	{ name = 'cmp_tabnine' },
+ },
+}
 
 local params = { noremap = true, silent = true }
 
