@@ -34,7 +34,8 @@ return require('packer').startup(function()
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use { 'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   use { 'onsails/lspkind-nvim' }
 
+  use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
 end)
