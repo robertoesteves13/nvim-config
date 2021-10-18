@@ -47,6 +47,7 @@ wk.register(require('keymaps/vim'), params)
 wk.register(require('keymaps/buffer'), params)
 wk.register(require('keymaps/treeview'), params)
 wk.register(require('keymaps/project'), params)
+wk.register(require('keymaps/git'), params)
 
 require('config')()
 require('lsp')()

@@ -42,4 +42,8 @@ return require('packer').startup(function()
   use { 'Shatur/neovim-cmake',
         requires = { { 'skywind3000/asyncrun.vim' }, { 'mfussenegger/nvim-dap' } }
       }
+  use {'mhinz/vim-signify'}
+  use {'tpope/vim-fugitive'}
+  use {'tpope/vim-rhubarb'}
+  use {'junegunn/gv.vim'}
 end)
