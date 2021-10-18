@@ -38,4 +38,8 @@ return require('packer').startup(function()
   use { 'onsails/lspkind-nvim' }
 
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
+
+  use { 'Shatur/neovim-cmake',
+        requires = { { 'skywind3000/asyncrun.vim' }, { 'mfussenegger/nvim-dap' } }
+      }
 end)
