@@ -28,11 +28,14 @@ return require('packer').startup(function()
 	use { "romgrk/barbar.nvim" }
 	use { "ChristianChiarulli/dashboard-nvim" }
 
+	
+
 	use {
 	  'nvim-telescope/telescope.nvim',
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+<<<<<<< HEAD
   use { 'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   use { 'onsails/lspkind-nvim' }
 
@@ -50,4 +53,10 @@ return require('packer').startup(function()
   use {'nvim-telescope/telescope-dap.nvim'}
 
   use {'skywind3000/asyncrun.extra'}
+=======
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  
+  use { "fladson/vim-kitty" }
+  
+>>>>>>> beacbf99e07e467cb3a72077e638bf3cfb015575
 end)
