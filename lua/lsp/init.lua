@@ -1,5 +1,5 @@
 return function ()
-  local dap = require('dap')
+  local dap = require('dap-install')
 
   require('lualine').setup {
       options = {theme = 'gruvbox'}

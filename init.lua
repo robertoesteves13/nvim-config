@@ -2,8 +2,7 @@ require('plugins')
 
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.api.nvim_set_var('gruvbox_contrast_dark', 'hard')
-vim.api.nvim_set_var('gruvbox_invert_selection', '0')
+vim.api.nvim_set_var('gruvbox_contrast_dark', 'hard') vim.api.nvim_set_var('gruvbox_invert_selection', '0')
 
 vim.api.nvim_set_var('&t_8f', '<Esc>[38;2;%lu;%lu;%lum')
 vim.api.nvim_set_var('&t_8f', '<Esc>[48;2;%lu;%lu;%lum')
@@ -40,6 +39,9 @@ local params = {
   silent = true
 }
 
+require('config')()
+require('lsp')()
+
 local wk = require('which-key')
 wk.register(require('keymaps/telescope'), params)
 wk.register(require('keymaps/lsp'), params)
@@ -48,6 +50,8 @@ wk.register(require('keymaps/buffer'), params)
 wk.register(require('keymaps/treeview'), params)
 wk.register(require('keymaps/project'), params)
 wk.register(require('keymaps/git'), params)
+wk.register(require('keymaps/dap'), params)
 
-require('config')()
-require('lsp')()
+vim.api.nvim_set_keymap("n", "<S-k>", "<cmd>lua require'dap'.step_out()<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<S-l>", "<cmd>lua require'dap'.step_into()<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<S-j>", "<cmd>lua require'dap'.step_over()<CR>", {noremap = true})

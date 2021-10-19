@@ -5,8 +5,7 @@ return require('packer').startup(function()
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 	use {
-	    'kyazdani42/nvim-tree.lua',
-	    requires = 'kyazdani42/nvim-web-devicons',
+	    'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons',
 	    config = function() require'nvim-tree'.setup {} end
 	}
 
@@ -46,4 +45,9 @@ return require('packer').startup(function()
   use {'tpope/vim-fugitive'}
   use {'tpope/vim-rhubarb'}
   use {'junegunn/gv.vim'}
+
+  use {'Pocco81/DAPInstall.nvim'}
+  use {'nvim-telescope/telescope-dap.nvim'}
+
+  use {'skywind3000/asyncrun.extra'}
 end)
