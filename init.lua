@@ -52,6 +52,7 @@ wk.register(require('keymaps/treeview'), params)
 wk.register(require('keymaps/project'), params)
 wk.register(require('keymaps/git'), params)
 wk.register(require('keymaps/dap'), params)
+wk.register(require('keymaps/refactor'), {mode = 'v', prefix = '<leader>'})
 
 vim.api.nvim_set_keymap("n", "<S-k>", "<cmd>lua require'dap'.step_out()<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<S-l>", "<cmd>lua require'dap'.step_into()<CR>", {noremap = true})
