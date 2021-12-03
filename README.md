@@ -26,7 +26,3 @@ Optionally install LSP server for the languages of your choice
 ```
 :LspInstall LANGUAGE-NAME-HERE
 ```
-
-## Mico's fork additions
-- vim-kitty
-- vim-kitty-navigator
