@@ -7,16 +7,25 @@ Repo containing my current neovim configuration
 - A compiler for C
 ## Installation
 
-> Linux  
-`git clone git@github.com:robertoesteves13/nvim-config.git $HOME/.config/nvim`  
+> Linux
+```sh
+git clone git@github.com:robertoesteves13/nvim-config.git ~/.config/nvim
+```
+
 > Windows Powershell  
-`git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim\"`  
+```ps1
+git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim\"
+```
 
 ### Nvim
 Install packages
-`:PackerSync`
+```
+:PackerSync
+```
 Optionally install LSP server for the languages of your choice
-`:LspInstall LANGUAGE-NAME-HERE`
+```
+:LspInstall LANGUAGE-NAME-HERE
+```
 
 ## Mico's fork additions
 - vim-kitty
