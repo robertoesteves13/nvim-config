@@ -8,9 +8,9 @@ Repo containing my current neovim configuration
 ## Installation
 
 > Linux  
-`git clone git@github.com:robertoesteves13/nvim-config.git $HOME/.config/nvim`
+`git clone git@github.com:robertoesteves13/nvim-config.git $HOME/.config/nvim`  
 > Windows Powershell  
-`git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim\"`
+`git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim\"`  
 
 ### Nvim
 Install packages
