@@ -7,9 +7,9 @@ Repo containing my current neovim configuration
 - A compiler for C
 ## Installation
 
-> Linux
+> Linux  
 `git clone git@github.com:robertoesteves13/nvim-config.git $HOME/.config/nvim`
-> Windows
+> Windows Powershell  
 `git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim\"`
 
 ### Nvim
