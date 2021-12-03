@@ -14,7 +14,7 @@ git clone git@github.com:robertoesteves13/nvim-config.git ~/.config/nvim
 
 > Windows Powershell  
 ```ps1
-git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim\"
+git clone git@github.com:robertoesteves13/nvim-config.git "$env:LOCALAPPDATA\nvim\"
 ```
 
 ### Nvim
