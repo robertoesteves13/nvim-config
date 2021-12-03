@@ -27,9 +27,6 @@ return require('packer').startup(function()
 	use { "shadmansaleh/lualine.nvim" }
 	use { "romgrk/barbar.nvim" }
 	use { "ChristianChiarulli/dashboard-nvim" }
-	
-	use { "fladson/vim-kitty" }
-  use { "knubie/vim-kitty-navigator", run="cp ./*.py ~/.config/kitty/" }
 
 	use {
 	  'nvim-telescope/telescope.nvim',
