@@ -24,7 +24,7 @@ return require('packer').startup(function()
 	use { "saadparwaiz1/cmp_luasnip" }
 	use { "L3MON4D3/LuaSnip" }
 
-	use { "shadmansaleh/lualine.nvim" }
+	use { "nvim-lualine/lualine.nvim" }
 	use { "romgrk/barbar.nvim" }
 	use { "ChristianChiarulli/dashboard-nvim" }
 
