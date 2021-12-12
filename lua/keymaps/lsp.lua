@@ -6,5 +6,6 @@ return {
     p = {'<cmd>Telescope lsp_references<CR>', 'Peek references'},
     r = {'<cmd>lua vim.lsp.buf.rename()<CR>', 'Rename'},
     f = {'<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format file'},
+    s = {'<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', 'See workspace symbols'},
   }
 }
