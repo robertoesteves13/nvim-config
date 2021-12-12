@@ -25,6 +25,8 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.cursorline = true
 vim.o.wrap = false
+vim.o.clipboard = vim.o.clipboard .. "unnamedplus"
+vim.o.mouse = "a"
 
 vim.wo.number = true
 vim.wo.relativenumber = true
