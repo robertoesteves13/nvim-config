@@ -36,26 +36,7 @@ vim.o.backup = false
 vim.cmd([[set undodir=~/.config/nvim/undodir]])
 vim.o.undofile = true
 
-local params = {
-  prefix = '<leader>',
-  noremap = true,
-  silent = true
-}
-
-require('config')()
 require('lsp')()
-
-local wk = require('which-key')
-wk.register(require('keymaps/telescope'), params)
-wk.register(require('keymaps/lsp'), params)
-wk.register(require('keymaps/vim'), params)
-wk.register(require('keymaps/buffer'), params)
-wk.register(require('keymaps/treeview'), params)
-wk.register(require('keymaps/project'), params)
-wk.register(require('keymaps/git'), params)
-wk.register(require('keymaps/dap'), params)
-wk.register(require('keymaps/normal'), params)
-wk.register(require('keymaps/refactor'), {mode = 'v', prefix = '<leader>'})
 
 vim.api.nvim_set_keymap("n", "<S-k>", "<cmd>lua require'dap'.step_out()<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<S-l>", "<cmd>lua require'dap'.step_into()<CR>", {noremap = true})
