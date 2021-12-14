@@ -33,7 +33,7 @@ vim.wo.relativenumber = true
 
 vim.o.swapfile = false
 vim.o.backup = false
-vim.cmd([[set undodir=~/.config/nvim/undodir]])
+vim.cmd([[set undodir=]] .. vim.fn.stdpath('config') .. '/undodir')
 vim.o.undofile = true
 
 require('lsp')()
