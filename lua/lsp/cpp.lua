@@ -40,7 +40,7 @@ end
 
 require('cmake').setup({
   parameters_file = 'neovim.json', -- JSON file to store information about selected target, run arguments and build type.
-  build_dir = '{cwd}' .. 'build' .. '{os}-{build_type}', -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values.
+  build_dir = '{cwd}' .. '/build' .. '/{os}-{build_type}', -- Build directory. The expressions `{cwd}`, `{os}` and `{build_type}` will be expanded with the corresponding text values.
   default_projects_path = vim.loop.os_homedir() .. 'Projects', -- Default folder for creating project.
   configure_arguments = '-D CMAKE_EXPORT_COMPILE_COMMANDS=1', -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
   build_arguments = '', -- Default arguments that will be always passed at cmake build step.
