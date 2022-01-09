@@ -5,6 +5,8 @@ return function ()
       options = {theme = 'gruvbox'}
   }
 
+  local nvim_lsp = require('lspconfig')
+
   -- LSP Config
   local lsp_installer = require("nvim-lsp-installer")
   local cmp = require'cmp'
@@ -46,6 +48,22 @@ return function ()
             }
           }
         }
+      end
+
+      if server.name == 'tsserver' then
+        opts.root_dir = nvim_lsp.util.root_pattern("package.json")
+      end
+
+      if server.name == 'denols' then
+        opts.settings = {
+          deno = {
+            enable = true,
+            lint = true,
+            importMap = 'import_map.json'
+          }
+        }
+
+        opts.root_dir = nvim_lsp.util.root_pattern("import_map.json")
       end
 
       server:setup(opts)
