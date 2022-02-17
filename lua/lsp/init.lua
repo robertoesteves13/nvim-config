@@ -27,7 +27,7 @@ return function ()
     sources = {
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
-      { name = 'cmp_tabnine' },
+      -- { name = 'cmp_tabnine' },
       { name = 'buffer' },
     },
     formatting = {
@@ -51,6 +51,8 @@ return function ()
       end
 
       if server.name == 'tsserver' then
+        opts.settings = {}
+
         opts.root_dir = nvim_lsp.util.root_pattern("package.json")
       end
 
@@ -70,5 +72,6 @@ return function ()
       vim.cmd [[ do User LspAttachBuffers ]]
   end)
 
+  vim.cmd [[ autocmd BufReadPost *.kt setlocal filetype=kotlin ]]
   require('lsp/cpp')(dap)
 end

@@ -1,5 +1,3 @@
-  vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
@@ -36,7 +34,7 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-  use { 'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  -- use { 'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
   use { 'onsails/lspkind-nvim' }
 
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
