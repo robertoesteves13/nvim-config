@@ -3,5 +3,6 @@ return {
     name = 'Refactor',
     e = {[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], "Extract function"},
     f = {[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], "Extract funtion into file"},
+    v = {[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], "Extract funtion into file"},
   }
 }

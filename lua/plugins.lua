@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
 	use { "romgrk/barbar.nvim" }
 	use { "ChristianChiarulli/dashboard-nvim" }
 
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 	use {
 	  'nvim-telescope/telescope.nvim',
     config = require('config/telescope')(),
