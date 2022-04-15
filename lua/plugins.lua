@@ -1,18 +1,13 @@
 return require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
-    config = require('config/treesitter')()
-  }
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 	use {
 	    'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons',
 	    config = function() require'nvim-tree'.setup {} end
 	}
 
-	use {
-		"folke/which-key.nvim",
-		config = require('config/wk')
-	}
+	use { "folke/which-key.nvim" }
 
 	use { "morhetz/gruvbox" }
 
@@ -31,7 +26,6 @@ return require('packer').startup(function(use)
   use { "nvim-telescope/telescope-file-browser.nvim" }
 	use {
 	  'nvim-telescope/telescope.nvim',
-    config = require('config/telescope')(),
 	  requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
@@ -78,7 +72,6 @@ return require('packer').startup(function(use)
 
   use {
     "ThePrimeagen/refactoring.nvim",
-    config = require('config/refactor')(),
     requires = {
         {"nvim-lua/plenary.nvim"},
         {"nvim-treesitter/nvim-treesitter"}
