@@ -39,7 +39,7 @@ vim.o.undofile = true
 -- Configurations
 require('lsp')()
 require('config/treesitter')()
-require('config/wk')
+require('config/wk')()
 require('config/telescope')()
 require('config/refactor')()
 

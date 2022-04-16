@@ -45,7 +45,7 @@ require('cmake').setup({
   configure_arguments = '-D CMAKE_EXPORT_COMPILE_COMMANDS=1', -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
   build_arguments = '', -- Default arguments that will be always passed at cmake build step.
   asyncrun_options = { save = 2 }, -- AsyncRun options that will be passed on cmake execution. See https://github.com/skywind3000/asyncrun.vim#manual
-  target_asyncrun_options = { mode = "term", pos = "gnome"}, -- AsyncRun options that will be passed on target execution. See https://github.com/skywind3000/asyncrun.vim#manual
+  target_asyncrun_options = { mode = "term", pos = "external"}, -- AsyncRun options that will be passed on target execution. See https://github.com/skywind3000/asyncrun.vim#manual
   dap_open_command = dap.repl.open,
 })
 end
