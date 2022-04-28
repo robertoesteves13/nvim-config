@@ -1,5 +1,5 @@
 return function ()
-  local dap = require('dap-install')
+  local dap = require('nvim-dap')
 
   require('lualine').setup {
       options = {theme = 'gruvbox'}

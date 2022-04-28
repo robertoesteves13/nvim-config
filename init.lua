@@ -37,12 +37,8 @@ vim.cmd([[set undodir=]] .. vim.fn.stdpath('config') .. '/undodir')
 vim.o.undofile = true
 
 -- Configurations
-require('lsp')()
 require('config/treesitter')()
 require('config/wk')()
 require('config/telescope')()
 require('config/refactor')()
-
-vim.api.nvim_set_keymap("n", "<S-k>", "<cmd>lua require'dap'.step_out()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<S-l>", "<cmd>lua require'dap'.step_into()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<S-j>", "<cmd>lua require'dap'.step_over()<CR>", {noremap = true})
+require('lualine').setup()

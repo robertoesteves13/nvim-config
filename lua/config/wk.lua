@@ -11,12 +11,9 @@ return function ()
   wk.setup {}
 
   wk.register(require('keymaps/telescope'), params)
-  wk.register(require('keymaps/lsp'), params)
   wk.register(require('keymaps/vim'), params)
   wk.register(require('keymaps/buffer'), params)
-  wk.register(require('keymaps/project'), params)
   wk.register(require('keymaps/git'), params)
-  wk.register(require('keymaps/dap'), params)
   wk.register(require('keymaps/normal'), params)
   wk.register(require('keymaps/refactor'), {mode = 'v', prefix = '<leader>'})
 end
