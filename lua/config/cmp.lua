@@ -1,6 +1,7 @@
 local exp = {}
 
 exp.cmp = require("cmp")
+exp.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 exp.setup = function()
   exp.cmp.setup({
     snippet = {
@@ -8,6 +9,12 @@ exp.setup = function()
       expand = function(args)
         require('luasnip').lsp_expand(args.body)
       end,
+    },
+
+    formatting = {
+      format = require('lspkind').cmp_format({
+        mode = "symbol"
+      })
     },
     window = {
       -- completion = exp.cmp.config.window.bordered(),

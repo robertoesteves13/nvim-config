@@ -12,6 +12,9 @@ return require('packer').startup(function(use)
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use {'kyazdani42/nvim-web-devicons'}
   use { "luukvbaal/stabilize.nvim", config = function() require("stabilize").setup() end }
+  use { "karb94/neoscroll.nvim" }
+  use { "rcarriga/nvim-notify" }
+  use { "onsails/lspkind.nvim" }
 
   -- Make coding enjoyable
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
