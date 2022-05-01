@@ -1,28 +1,24 @@
-# nvim-config
-Repo containing my current neovim configuration
+# READ THIS BEFORE USING IT
+Because of depending on a bleeding-edge version of neovim, things may be easily breakable since I don't freeze the plugins into a working state (might do that later). I don't guarantee to update fast if some plugin breaks, instead you should rely on other neovim configurations with saner defaults such as [LunarVim](https://github.com/LunarVim/LunarVim) or [NvChad](https://github.com/NvChad/NvChad)
+
 ## Dependencies
-- Neovim Nightly
-- NodeJS
+- Neovim Nightly (Always check for latest version)
+- Treesitter
 - [packer.nvim](https://github.com/wbthomason/packer.nvim)
-- A compiler for C
+- MinGW (Windows only)
+
 ## Installation
+First, install packer reading [here](https://github.com/wbthomason/packer.nvim) and then clone this repo:
 
 > Linux
 ```sh
 git clone git@github.com:robertoesteves13/nvim-config.git ~/.config/nvim
 ```
 
-> Windows Powershell  
+> Windows Powershell (not guaranteed to work)
 ```ps1
 git clone git@github.com:robertoesteves13/nvim-config.git "$env:LOCALAPPDATA\nvim\"
 ```
 
-### Nvim
-Install packages
-```
-:PackerSync
-```
-Optionally install LSP server for the languages of your choice
-```
-:LspInstall LANGUAGE-NAME-HERE
-```
+Don't forget to install all the plugins by running the `:PackerSync` command inside neovim.
+
