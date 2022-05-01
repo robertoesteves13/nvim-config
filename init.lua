@@ -38,7 +38,10 @@ vim.o.undofile = true
 
 -- Configurations
 require('config/treesitter')()
-require('config/wk')()
 require('config/telescope')()
 require('config/refactor')()
+require('config/cmp').setup()
 require('lualine').setup()
+
+-- Keymaps
+require('keymaps/init').setup()
