@@ -1,14 +1,14 @@
 return require('packer').startup(function(use)
   -- Plugin Manager
-	use { 'wbthomason/packer.nvim' }
+  use { 'wbthomason/packer.nvim' }
 
   -- Best colorscheme ever!
-	use { "morhetz/gruvbox" }
+  use { "morhetz/gruvbox" }
 
   -- Make Neovim look dope
-	use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
-	use { "nvim-lualine/lualine.nvim" }
-	use { "romgrk/barbar.nvim" }
+  use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
+  use { "nvim-lualine/lualine.nvim" }
+  use { "romgrk/barbar.nvim" }
   use { "nvim-telescope/telescope-file-browser.nvim" }
   use {'kyazdani42/nvim-web-devicons'}
   use { "luukvbaal/stabilize.nvim", config = function() require("stabilize").setup() end }
