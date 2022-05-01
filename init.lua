@@ -15,6 +15,9 @@ vim.g.mapleader = " "
 
 vim.api.nvim_set_var('completeopt', 'menu,menuone,noselect')
 
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+
 vim.o.errorbells = false
 vim.o.hidden = true
 vim.o.smartindent = true
