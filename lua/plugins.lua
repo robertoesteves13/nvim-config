@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   -- Make coding enjoyable
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { "ThePrimeagen/refactoring.nvim" }
 
   -- LSP Plugins
