@@ -19,7 +19,9 @@ for _, filetype in pairs(require("filetypes")) do
     pattern = filetype.pattern,
     callback = function()
       filetype.configs()
-      lspconfig[filetype.lsp_name].setup(setup_params)
+      if filetype.lsp_name then
+        lspconfig[filetype.lsp_name].setup(setup_params)
+      end
     end,
   })
 end
