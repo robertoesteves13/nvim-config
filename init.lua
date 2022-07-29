@@ -9,7 +9,7 @@ vim.api.nvim_set_var('&t_8f', '<Esc>[38;2;%lu;%lu;%lum')
 vim.api.nvim_set_var('&t_8f', '<Esc>[48;2;%lu;%lu;%lum')
 
 vim.cmd([[colorscheme gruvbox]])
-vim.cmd([[set guifont=Fira\ Code:h11]])
+vim.opt.guifont = "FiraCode Nerd Font:h11"
 
 vim.g.mapleader = " "
 
