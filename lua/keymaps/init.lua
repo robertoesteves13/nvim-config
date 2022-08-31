@@ -6,9 +6,17 @@ binds.params = {
 }
 
 binds.lsp_attach = function(_, bufnr)
+  -- LSP
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', binds.params)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', binds.params)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', binds.params)
+
+  -- DAP
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>da', '<cmd>lua require\'dap\'.toggle_breakpoint()<CR>', binds.params)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dc', '<cmd>lua require\'dap\'.continue()<CR>', binds.params)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dso', '<cmd>lua require\'dap\'.step_over()<CR>', binds.params)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dsi', '<cmd>lua require\'dap\'.step_into()<CR>', binds.params)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dw', '<cmd>lua require\'dap\'.repl.open()<CR>', binds.params)
 end
 
 binds.map = function(keys, cmd)
@@ -42,7 +50,6 @@ binds.setup = function()
   binds.vmap('<leader>re', [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
   binds.vmap('<leader>rf', [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR> ]])
   binds.vmap('<leader>rv', [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR> ]])
-
 end
 
 return binds

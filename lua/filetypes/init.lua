@@ -6,4 +6,5 @@ return {
   deno = require("filetypes/deno"),
   zig = require("filetypes/zig"),
   dart = require("filetypes/dart"),
+  -- csharp = require("filetypes/csharp")
 }

@@ -53,6 +53,7 @@ vim.o.undofile = true
 require('config/treesitter')()
 require('config/telescope')()
 require('config/refactor')()
+require('config/dap')()
 require('config/cmp').setup()
 require('lualine').setup()
 require('neoscroll').setup()

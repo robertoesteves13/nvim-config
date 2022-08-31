@@ -1,5 +1,4 @@
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
+require('project').setup()
 
 -- Make denols work
 vim.g.markdown_fenced_languages = {
@@ -10,11 +9,15 @@ local lsp_attach = require('keymaps').lsp_attach
 local capabilities = require('config/cmp').capabilities
 local lspconfig = require('lspconfig')
 
-for _, filetype in pairs(require("filetypes")) do
+for name, filetype in pairs(require("filetypes")) do
   local setup_params = {
     on_attach = lsp_attach,
     capabilities = capabilities,
   }
+
+  if filetype.run_once then
+    filetype.run_once()
+  end
 
   if filetype.lsp_name then
     for key, value in pairs(filetype.lsp_setup_params) do
@@ -22,6 +25,12 @@ for _, filetype in pairs(require("filetypes")) do
     end
 
     lspconfig[filetype.lsp_name].setup(setup_params)
+
+    if filetype.dap_adapter_params then
+      local dap = require('dap')
+      dap.adapters[name] = filetype.dap_adapter_params
+      dap.configurations[name] = filetype.dap_configuration_params
+    end
   end
 
   vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
