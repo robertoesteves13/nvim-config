@@ -1,7 +1,7 @@
 local exp = {}
 
 exp.cmp = require("cmp")
-exp.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+exp.capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 exp.setup = function()
   exp.cmp.setup({
     snippet = {
@@ -30,6 +30,7 @@ exp.setup = function()
     sources = exp.cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
+      { name = 'orgmode' },
     }, {
       { name = 'buffer' },
     })

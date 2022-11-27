@@ -1,5 +1,8 @@
 require('project').setup()
 
+vim.cmd([[au BufNewFile,BufRead *.xaml setlocal filetype=xml]])
+vim.cmd([[au BufNewFile,BufRead *.axaml setlocal filetype=xml]])
+
 -- Make denols work
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
@@ -10,6 +13,10 @@ local capabilities = require('config/cmp').capabilities
 local lspconfig = require('lspconfig')
 
 for name, filetype in pairs(require("filetypes")) do
+  if filetype.pattern == nil then
+    print('WARNING: Filetype pattern for ' .. name .. ' not set, it might override the buffer config!')
+  end
+
   local setup_params = {
     on_attach = lsp_attach,
     capabilities = capabilities,
@@ -38,3 +45,4 @@ for name, filetype in pairs(require("filetypes")) do
     callback = filetype.configs
   })
 end
+

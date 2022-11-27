@@ -19,9 +19,6 @@ vim.g.mapleader = " "
 
 vim.api.nvim_set_var('completeopt', 'menu,menuone,noselect')
 
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-
 vim.o.errorbells = false
 vim.o.hidden = true
 vim.o.smartindent = true
@@ -36,8 +33,7 @@ vim.o.hlsearch = false
 vim.o.smartcase = true
 
 vim.o.filetype = true
-
-vim.notify = require('notify')
+vim.o.do_filetype_lua = 1
 
 vim.cmd([[set colorcolumn=80]])
 
@@ -49,14 +45,21 @@ vim.o.backup = false
 vim.cmd([[set undodir=]] .. vim.fn.stdpath('config') .. '/undodir')
 vim.o.undofile = true
 
+vim.opt.list = true
+
 -- Configurations
 require('config/treesitter')()
 require('config/telescope')()
 require('config/refactor')()
 require('config/dap')()
 require('config/cmp').setup()
-require('lualine').setup()
-require('neoscroll').setup()
+require('config/lualine')()
+require('indent_blankline').setup({
+  space_char_blankline = " ",
+  show_current_context = true,
+  show_current_context_start = true,
+})
+require('config/org')()
 
 -- Keymaps
 require('keymaps/init').setup()

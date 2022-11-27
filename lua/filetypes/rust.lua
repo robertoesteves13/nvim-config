@@ -1,17 +1,14 @@
 return {
-  configs = function ()
-    vim.bo.shiftwidth = 4
-    vim.bo.tabstop = 4
-  end,
-  run_once = function ()
-    local rt = require("rust-tools")
+  pattern = {"*.rs"},
 
-    rt.setup({
-      server = {
-        on_attach = function(_, bufnr)
-          vim.keymap.set("n", "<Leader>la", rt.hover_actions.hover_actions, { buffer = bufnr })
-        end,
-      },
-    })
+  lsp_name = "rust_analyzer",
+  lsp_setup_params = {
+    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+  },
+
+  configs = function ()
+    vim.opt.shiftwidth = 4
+    vim.opt.softtabstop = 4
+    vim.opt.tabstop = 4
   end,
 }

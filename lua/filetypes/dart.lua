@@ -1,10 +1,16 @@
-
 return {
-  pattern = {".dart"},
-  lsp_name = "dartls",
-  lsp_setup_params = {},
+  pattern = {"*.dart"},
   configs = function ()
     vim.bo.shiftwidth = 2
     vim.bo.tabstop = 2
-  end
+  end,
+  run_once = function ()
+    local lsp_attach = require('keymaps').lsp_attach
+
+    require('flutter-tools').setup {
+      lsp = {
+        on_attach = lsp_attach
+      }
+    }
+  end,
 }
