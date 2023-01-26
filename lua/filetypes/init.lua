@@ -10,5 +10,7 @@ return {
   dart = require("filetypes/dart"),
   svelte = require("filetypes/svelte"),
   csharp = require("filetypes/csharp"),
+  markdown = require("filetypes/markdown"),
+  haskell = require("filetypes/haskell"),
   kotlin = require("filetypes/kotlin")
 }

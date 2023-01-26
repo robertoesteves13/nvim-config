@@ -2,8 +2,13 @@ return require('packer').startup(function(use)
   -- Plugin Manager
   use { 'wbthomason/packer.nvim' }
 
-  -- Best colorscheme ever!
-  use { 'morhetz/gruvbox' }
+  -- Colorschemes
+  use { 'folke/tokyonight.nvim' }
+  use { 'ellisonleao/gruvbox.nvim' }
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use { "jacoborus/tender.vim" }
+  use { "savq/melange-nvim" }
+  use { 'almo7aya/neogruvbox.nvim' }
 
   -- Make Neovim look dope
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
@@ -13,7 +18,6 @@ return require('packer').startup(function(use)
   use { 'kyazdani42/nvim-web-devicons' }
   use { 'onsails/lspkind.nvim' }
   use { 'lukas-reineke/indent-blankline.nvim' }
-  use { 'nvim-orgmode/orgmode' }
 
   -- Make coding enjoyable
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
@@ -42,5 +46,6 @@ return require('packer').startup(function(use)
 
   -- Language-specific Plugins
   use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use { 'simrat39/rust-tools.nvim' }
   use { 'lervag/vimtex' }
 end)
