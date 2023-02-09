@@ -4,12 +4,9 @@ Because of depending on a bleeding-edge version of neovim, things may be easily 
 ## Dependencies
 - Neovim Nightly (Always check for latest version)
 - Treesitter
-- [packer.nvim](https://github.com/wbthomason/packer.nvim)
 - MinGW (Windows only)
 
 ## Installation
-First, install packer reading [here](https://github.com/wbthomason/packer.nvim) and then clone this repo:
-
 > Linux
 ```sh
 git clone git@github.com:robertoesteves13/nvim-config.git ~/.config/nvim
