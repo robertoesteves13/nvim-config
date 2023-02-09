@@ -1,4 +1,4 @@
-require('plugins')
+require('plugins')()
 
 vim.o.background = "dark"
 vim.o.termguicolors = true
@@ -48,18 +48,8 @@ vim.o.undofile = true
 vim.opt.list = true
 
 -- Configurations
-require('config/treesitter')()
-require('config/telescope')()
-require('config/refactor')()
 require('config/dap')()
 require('config/cmp').setup()
-require('config/lualine')()
-require('indent_blankline').setup({
-  space_char_blankline = " ",
-  show_current_context = true,
-  show_current_context_start = true,
-})
-require('config/vimwiki')
 
 -- Keymaps
 require('keymaps/init').setup()

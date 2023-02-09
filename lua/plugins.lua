@@ -1,51 +1,75 @@
-return require('packer').startup(function(use)
-  -- Plugin Manager
-  use { 'wbthomason/packer.nvim' }
+return function ()
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      lazypath,
+    })
+  end
+  vim.opt.rtp:prepend(lazypath)
 
-  -- Colorschemes
-  use { 'folke/tokyonight.nvim' }
-  use { 'ellisonleao/gruvbox.nvim' }
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use { "jacoborus/tender.vim" }
-  use { "savq/melange-nvim" }
-  use { 'almo7aya/neogruvbox.nvim' }
+  local plugins = {
+    -- Colorschemes
+    { 'folke/tokyonight.nvim' },
+    { 'ellisonleao/gruvbox.nvim' },
+    { "catppuccin/nvim", as = "catppuccin" },
+    { "jacoborus/tender.vim" },
+    { "savq/melange-nvim" },
+    { 'almo7aya/neogruvbox.nvim' },
 
-  -- Make Neovim look dope
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
-  use { 'nvim-lualine/lualine.nvim' }
-  use { 'romgrk/barbar.nvim' }
-  use { 'nvim-telescope/telescope-file-browser.nvim' }
-  use { 'kyazdani42/nvim-web-devicons' }
-  use { 'onsails/lspkind.nvim' }
-  use { 'lukas-reineke/indent-blankline.nvim' }
+    -- Make Neovim look dope
+    { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, config = require('config/telescope')},
+    { 'nvim-lualine/lualine.nvim', config = function() require("config/lualine")() end },
+    { 'romgrk/barbar.nvim' },
+    { 'nvim-telescope/telescope-file-browser.nvim' },
+    { 'kyazdani42/nvim-web-devicons' },
+    { 'onsails/lspkind.nvim' },
+    { 'lukas-reineke/indent-blankline.nvim', config = function()
+      require("indent_blankline").setup({
+        space_char_blankline = " ",
+        show_current_context = true,
+        show_current_context_start = true,
+      })
 
-  -- Make coding enjoyable
-  use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
-  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use { 'ThePrimeagen/refactoring.nvim' }
-  use { 'folke/trouble.nvim' }
+      -- Hack to load colorscheme properly in the plugin
+      vim.cmd([[colorscheme gruvbox]])
+    end },
 
-  -- LSP Support
-  use { 'neovim/nvim-lspconfig' }
+    -- Make coding enjoyable
+    { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end },
+    { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('config/treesitter') },
+    { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
+    { 'folke/trouble.nvim' },
 
-  -- Debugging support
-  use { 'mfussenegger/nvim-dap' }
-  use { 'theHamsta/nvim-dap-virtual-text' }
+    -- LSP Support
+    { 'neovim/nvim-lspconfig' },
 
-  -- Code Snippets
-  use { 'L3MON4D3/LuaSnip' }
-  use { 'saadparwaiz1/cmp_luasnip' }
+    -- Debugging support
+    { 'mfussenegger/nvim-dap' },
+    { 'theHamsta/nvim-dap-virtual-text' },
 
-  -- Intellisense
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
+    -- Code Snippets
+    { 'L3MON4D3/LuaSnip' },
+    { 'saadparwaiz1/cmp_luasnip' },
 
-  -- Language-specific Plugins
-  use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
-  use { 'simrat39/rust-tools.nvim' }
-  use { 'lervag/vimtex' }
-end)
+    -- Intellisense
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'hrsh7th/nvim-cmp' },
+
+    -- Language-specific Plugins
+    { 'akinsho/flutter-tools.nvim', dependencies = 'nvim-lua/plenary.nvim' },
+    { 'ionide/Ionide-vim' },
+    { 'simrat39/rust-tools.nvim' },
+    { 'lervag/vimtex' },
+  }
+
+  require("lazy").setup(plugins)
+end

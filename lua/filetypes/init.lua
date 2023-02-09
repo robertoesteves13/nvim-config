@@ -8,6 +8,7 @@ return {
   typescript = require("filetypes/typescript"),
   zig = require("filetypes/zig"),
   dart = require("filetypes/dart"),
+  php = require("filetypes/php"),
   svelte = require("filetypes/svelte"),
   csharp = require("filetypes/csharp"),
   markdown = require("filetypes/markdown"),
