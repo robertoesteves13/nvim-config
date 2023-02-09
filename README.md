@@ -16,6 +16,3 @@ git clone git@github.com:robertoesteves13/nvim-config.git ~/.config/nvim
 ```ps1
 git clone git@github.com:robertoesteves13/nvim-config.git "$env:LOCALAPPDATA\nvim\"
 ```
-
-Don't forget to install all the plugins by running the `:PackerSync` command inside neovim.
-
