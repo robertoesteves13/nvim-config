@@ -38,6 +38,17 @@ return function ()
       -- Hack to load colorscheme properly in the plugin
       vim.cmd([[colorscheme gruvbox]])
     end },
+    { 'vigoux/notifier.nvim', config = function() require('notifier').setup{
+        components = {
+          'nvim',
+          'lsp',
+          'rust-tools'
+        }
+    } end },
+    -- Discord Rich Presence
+    { 'andweeb/presence.nvim', config = function () require('presence').setup({
+      main_image = "file",
+    }) end},
 
     -- Make coding enjoyable
     { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end },
@@ -45,6 +56,7 @@ return function ()
     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('config/treesitter') },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
     { 'folke/trouble.nvim' },
+    { 'tpope/vim-fugitive' },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },

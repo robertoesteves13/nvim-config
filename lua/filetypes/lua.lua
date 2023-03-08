@@ -1,6 +1,6 @@
 return {
   pattern = {"*.lua"},
-  lsp_name = "sumneko_lua",
+  lsp_name = "lua_ls",
   lsp_setup_params = {
     settings = {
       Lua = {
