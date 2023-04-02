@@ -1,5 +1,6 @@
 return {
   lua = require("filetypes/lua"),
+  c = require("filetypes/c"),
   cpp = require("filetypes/cpp"),
   css = require("filetypes/css"),
   rust = require("filetypes/rust"),

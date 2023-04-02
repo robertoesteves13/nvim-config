@@ -81,6 +81,7 @@ return function ()
     { 'ionide/Ionide-vim' },
     { 'simrat39/rust-tools.nvim' },
     { 'lervag/vimtex' },
+    { 'elkowar/yuck.vim' },
   }
 
   require("lazy").setup(plugins)
