@@ -68,6 +68,9 @@ return function ()
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
     { 'folke/trouble.nvim' },
     { 'tpope/vim-fugitive' },
+    { 'ThePrimeagen/harpoon' },
+    { 'skywind3000/asynctasks.vim' },
+    { 'skywind3000/asyncrun.vim' },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },

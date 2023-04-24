@@ -48,9 +48,26 @@ binds.setup = function()
   binds.nmap('<leader>fw', '<cmd>Telescope live_grep<CR>')
 
   -- Refactoring
-  binds.vmap('<leader>re', [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
-  binds.vmap('<leader>rf', [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR> ]])
-  binds.vmap('<leader>rv', [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR> ]])
+  binds.vmap('<leader>re', [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
+  binds.vmap('<leader>rf', [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR> ]])
+  binds.vmap('<leader>rv', [[<Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR> ]])
+
+  -- Harpoon
+  binds.nmap('<leader>ha', [[<cmd>lua require("harpoon.mark").add_file()<CR>]])
+  binds.nmap('<leader>hl', [[<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]])
+  binds.nmap('`', [[<cmd>lua require("harpoon.ui").nav_next()<CR>]])
+
+  -- Overseer (task runner)
+  binds.nmap('<leader>ti', [[<cmd>AsyncTaskList<CR>]])
+  binds.nmap('<leader>tr', [[<cmd>AsyncTaskLast<CR>]])
+  binds.nmap('<leader>te', [[<cmd>AsyncTaskEdit<CR>]])
+
+  -- Git integration
+  binds.nmap('<leader>gi', [[<cmd>Git<CR>]])
+  binds.nmap('<leader>gc', [[<cmd>Git commit<CR>]])
+  binds.nmap('<leader>gd', [[<cmd>Git diff HEAD<CR>]])
+  binds.nmap('<leader>gp', [[<cmd>Git push<CR>]])
+  binds.nmap('<leader>gs', [[<cmd>Git pull<CR>]])
 end
 
 return binds

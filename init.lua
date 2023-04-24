@@ -17,6 +17,8 @@ vim.g.neovide_cursor_trail_length = "0.1"
 
 vim.g.mapleader = " "
 
+vim.g.asyncrun_open = 6
+
 vim.api.nvim_set_var('completeopt', 'menu,menuone,noselect')
 
 vim.o.errorbells = false
