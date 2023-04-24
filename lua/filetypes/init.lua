@@ -14,5 +14,7 @@ return {
   csharp = require("filetypes/csharp"),
   markdown = require("filetypes/markdown"),
   haskell = require("filetypes/haskell"),
-  kotlin = require("filetypes/kotlin")
+  kotlin = require("filetypes/kotlin"),
+  html = require("filetypes/html"),
+  emmet = require("filetypes/emmet"),
 }

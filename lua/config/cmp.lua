@@ -1,3 +1,4 @@
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local exp = {}
 
 exp.cmp = require("cmp")
@@ -31,6 +32,7 @@ exp.setup = function()
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
       { name = 'orgmode' },
+      { name = 'crates' },
     }, {
       { name = 'buffer' },
     })
@@ -63,5 +65,10 @@ exp.setup = function()
     })
   })
 end
+
+exp.cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 return exp

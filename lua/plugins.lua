@@ -15,7 +15,7 @@ return function ()
   local plugins = {
     -- Colorschemes
     { 'folke/tokyonight.nvim' },
-    { 'ellisonleao/gruvbox.nvim' },
+		{ "ellisonleao/gruvbox.nvim" },
     { "catppuccin/nvim", as = "catppuccin" },
     { "jacoborus/tender.vim" },
     { "savq/melange-nvim" },
@@ -51,7 +51,18 @@ return function ()
     }) end},
 
     -- Make coding enjoyable
-    { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end },
+    { 'windwp/nvim-autopairs',
+      config = function()
+        require('nvim-autopairs').setup({
+          check_ts = true,
+          ts_config = {
+            lua = {'string'},-- it will not add a pair on that treesitter node
+            javascript = {'template_string'},
+            java = false,-- don't check treesitter on java
+          }
+        })
+      end,
+    },
     { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('config/treesitter') },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
@@ -82,6 +93,36 @@ return function ()
     { 'simrat39/rust-tools.nvim' },
     { 'lervag/vimtex' },
     { 'elkowar/yuck.vim' },
+    {
+      'Saecki/crates.nvim',
+      event = { "BufRead Cargo.toml" },
+      dependencies = 'nvim-lua/plenary.nvim',
+      config = function ()
+        local crates = require('crates')
+        local opts = { silent = true }
+
+        vim.keymap.set('n', '<leader>ct', crates.toggle, opts)
+        vim.keymap.set('n', '<leader>cr', crates.reload, opts)
+
+        vim.keymap.set('n', '<leader>cv', crates.show_versions_popup, opts)
+        vim.keymap.set('n', '<leader>cf', crates.show_features_popup, opts)
+        vim.keymap.set('n', '<leader>cd', crates.show_dependencies_popup, opts)
+
+        vim.keymap.set('n', '<leader>cu', crates.update_crate, opts)
+        vim.keymap.set('v', '<leader>cu', crates.update_crates, opts)
+        vim.keymap.set('n', '<leader>ca', crates.update_all_crates, opts)
+        vim.keymap.set('n', '<leader>cU', crates.upgrade_crate, opts)
+        vim.keymap.set('v', '<leader>cU', crates.upgrade_crates, opts)
+        vim.keymap.set('n', '<leader>cA', crates.upgrade_all_crates, opts)
+
+        vim.keymap.set('n', '<leader>cH', crates.open_homepage, opts)
+        vim.keymap.set('n', '<leader>cR', crates.open_repository, opts)
+        vim.keymap.set('n', '<leader>cD', crates.open_documentation, opts)
+        vim.keymap.set('n', '<leader>cC', crates.open_crates_io, opts)
+
+        crates.setup()
+      end,
+    },
   }
 
   require("lazy").setup(plugins)
