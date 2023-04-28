@@ -1,6 +1,6 @@
 return {
   pattern = {"*.zig"},
-  lsp_name = "zls",
+  lsp_name = "none",
   lsp_setup_params = {},
   configs = function ()
     vim.bo.shiftwidth = 4

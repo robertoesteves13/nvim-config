@@ -121,7 +121,7 @@ binds.setup = function()
   binds.nmap('<leader>vc', '<cmd>Telescope colorscheme<CR>')
 
   -- Browsing stuff
-  binds.nmap('<leader>e', '<cmd>Telescope file_browser<CR>')
+  binds.nmap('<leader>e', '<cmd>Neotree<CR>')
   binds.nmap('<leader>ff', '<cmd>Telescope find_files<CR>')
   binds.nmap('<leader>fw', '<cmd>Telescope live_grep<CR>')
 
