@@ -26,7 +26,6 @@ return function ()
     { 'nvim-lualine/lualine.nvim', config = function() require("config/lualine")() end },
     { 'romgrk/barbar.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
-    { 'kyazdani42/nvim-web-devicons' },
     { 'onsails/lspkind.nvim' },
     { 'lukas-reineke/indent-blankline.nvim', config = function()
       require("indent_blankline").setup({
@@ -71,6 +70,15 @@ return function ()
     { 'ThePrimeagen/harpoon' },
     { 'skywind3000/asynctasks.vim' },
     { 'skywind3000/asyncrun.vim' },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      dependencies = { 
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+    },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
