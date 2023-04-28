@@ -22,6 +22,13 @@ for name, filetype in pairs(require("filetypes")) do
     capabilities = capabilities,
   }
 
+  -- Hack to fix omnisharp
+  if name == "csharp" then
+    for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+      vim.api.nvim_set_hl(0, group, {})
+    end
+  end
+
   if filetype.run_once then
     filetype.run_once()
   end

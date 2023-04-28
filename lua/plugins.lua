@@ -64,7 +64,7 @@ return function ()
       end,
     },
     { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
-    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = require('config/treesitter') },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = require('config/treesitter') },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
     { 'folke/trouble.nvim' },
     { 'tpope/vim-fugitive' },
