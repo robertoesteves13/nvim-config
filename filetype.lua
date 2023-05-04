@@ -2,6 +2,7 @@ require('project').setup()
 
 vim.cmd([[au BufNewFile,BufRead *.xaml setlocal filetype=xml]])
 vim.cmd([[au BufNewFile,BufRead *.axaml setlocal filetype=xml]])
+vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
 
 -- Make denols work
 vim.g.markdown_fenced_languages = {

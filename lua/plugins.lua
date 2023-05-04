@@ -68,8 +68,7 @@ return function ()
     { 'folke/trouble.nvim' },
     { 'tpope/vim-fugitive' },
     { 'ThePrimeagen/harpoon' },
-    { 'skywind3000/asynctasks.vim' },
-    { 'skywind3000/asyncrun.vim' },
+    { 'stevearc/overseer.nvim', config = function() require('overseer').setup() end, },
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",

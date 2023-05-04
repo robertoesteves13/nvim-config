@@ -136,9 +136,8 @@ binds.setup = function()
   binds.nmap('`', [[<cmd>lua require("harpoon.ui").nav_next()<CR>]])
 
   -- Overseer (task runner)
-  binds.nmap('<leader>ti', [[<cmd>AsyncTaskList<CR>]])
-  binds.nmap('<leader>tr', [[<cmd>AsyncTaskLast<CR>]])
-  binds.nmap('<leader>te', [[<cmd>AsyncTaskEdit<CR>]])
+  binds.nmap('<leader>ti', [[<cmd>OverseerToggle<CR>]])
+  binds.nmap('<leader>tr', [[<cmd>OverseerRun<CR>]])
 
   -- Git integration
   binds.nmap('<leader>gi', [[<cmd>Git<CR>]])

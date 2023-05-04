@@ -1,6 +1,6 @@
 return {
   pattern = {"*.slint"},
-  lsp_name = "slint-lsp",
+  lsp_name = "slint_lsp",
   lsp_setup_params = {},
 
   configs = function ()
