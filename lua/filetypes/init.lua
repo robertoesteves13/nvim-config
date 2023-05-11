@@ -11,6 +11,7 @@ return {
   dart = require("filetypes/dart"),
   php = require("filetypes/php"),
   svelte = require("filetypes/svelte"),
+  slint = require("filetypes/slint"),
   csharp = require("filetypes/csharp"),
   markdown = require("filetypes/markdown"),
   haskell = require("filetypes/haskell"),
