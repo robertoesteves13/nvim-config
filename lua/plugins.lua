@@ -84,6 +84,7 @@ return function ()
     { 'stevearc/overseer.nvim', config = function() require('overseer').setup() end, },
     { 'stevearc/oil.nvim', opts = {} ,dependencies = {'nvim-tree/nvim-web-devicons'} },
     { 'echasnovski/mini.nvim', version = '*' },
+    { 'akinsho/toggleterm.nvim', version = "*", config = true },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },

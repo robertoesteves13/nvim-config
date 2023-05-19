@@ -110,6 +110,10 @@ binds.vmap = function(keys, cmd)
   vim.api.nvim_set_keymap('v', keys, cmd, binds.params)
 end
 
+binds.tmap = function(keys, cmd)
+  vim.api.nvim_set_keymap('t', keys, cmd, binds.params)
+end
+
 binds.setup = function()
   -- Normal Mode
   binds.nmap('<leader>q', '<cmd>q<CR>')
@@ -125,7 +129,8 @@ binds.setup = function()
 
   -- Browsing stuff
   binds.nmap('<leader>ff', '<cmd>Telescope find_files<CR>')
-  binds.nmap('<leader>fw', '<cmd>Telescope live_grep<CR>')
+  binds.nmap('<leader>ff', '<cmd>Telescope find_files<CR>')
+  binds.nmap('<leader>fb', '<cmd>Telescope buffers<CR>')
 
   -- Refactoring
   binds.vmap('<leader>re', [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
@@ -147,6 +152,10 @@ binds.setup = function()
   binds.nmap('<leader>gd', [[<cmd>Git diff HEAD<CR>]])
   binds.nmap('<leader>gp', [[<cmd>Git push<CR>]])
   binds.nmap('<leader>gs', [[<cmd>Git pull<CR>]])
+
+  -- Terminal
+  binds.nmap('<leader>s', '<cmd>ToggleTerm<CR>')
+  binds.tmap('<Esc>', '<C-\\><C-n>')
 end
 
 return binds
