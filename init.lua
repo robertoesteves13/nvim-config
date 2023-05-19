@@ -51,7 +51,11 @@ vim.opt.list = true
 
 -- Configurations
 require('config/dap')()
-require('config/cmp').setup()
+
+require('mini.completion').setup()
+require('mini.starter').setup()
+require('mini.tabline').setup()
+require('mini.pairs').setup()
 
 -- Keymaps
 require('keymaps/init').setup()

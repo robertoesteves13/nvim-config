@@ -120,8 +120,10 @@ binds.setup = function()
   binds.nmap('<leader>vo', '<cmd>Telescope vim_options<CR>')
   binds.nmap('<leader>vc', '<cmd>Telescope colorscheme<CR>')
 
+  -- Filesystem navigation
+  binds.nmap('<leader>e', '<cmd>Oil<CR>')
+
   -- Browsing stuff
-  binds.nmap('<leader>e', '<cmd>Neotree<CR>')
   binds.nmap('<leader>ff', '<cmd>Telescope find_files<CR>')
   binds.nmap('<leader>fw', '<cmd>Telescope live_grep<CR>')
 

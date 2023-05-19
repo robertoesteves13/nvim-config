@@ -10,7 +10,6 @@ vim.g.markdown_fenced_languages = {
 }
 
 local lsp_attach = require('keymaps').lsp_attach
-local capabilities = require('config/cmp').capabilities
 local lspconfig = require('lspconfig')
 
 for name, filetype in pairs(require("filetypes")) do

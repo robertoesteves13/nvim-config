@@ -24,7 +24,6 @@ return function ()
     -- Make Neovim look dope
     { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, config = require('config/telescope')},
     { 'nvim-lualine/lualine.nvim', config = function() require("config/lualine")() end },
-    { 'romgrk/barbar.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'onsails/lspkind.nvim' },
     { 'lukas-reineke/indent-blankline.nvim', config = function()
@@ -41,27 +40,41 @@ return function ()
         components = {
           'nvim',
           'lsp',
-          'rust-tools'
         }
     } end },
     -- Discord Rich Presence
     { 'andweeb/presence.nvim', config = function () require('presence').setup({
       main_image = "file",
     }) end},
+    {
+      "lewis6991/hover.nvim",
+      config = function()
+          require("hover").setup {
+              init = function()
+                  -- Require providers
+                  require("hover.providers.lsp")
+                  -- require('hover.providers.gh')
+                  -- require('hover.providers.gh_user')
+                  -- require('hover.providers.jira')
+                  -- require('hover.providers.man')
+                  -- require('hover.providers.dictionary')
+              end,
+              preview_opts = {
+                  border = nil
+              },
+              -- Whether the contents of a currently open hover window should be moved
+              -- to a :h preview-window when pressing the hover keymap.
+              preview_window = false,
+              title = true
+          }
+
+          -- Setup keymaps
+          vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
+          vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
+      end
+    },
 
     -- Make coding enjoyable
-    { 'windwp/nvim-autopairs',
-      config = function()
-        require('nvim-autopairs').setup({
-          check_ts = true,
-          ts_config = {
-            lua = {'string'},-- it will not add a pair on that treesitter node
-            javascript = {'template_string'},
-            java = false,-- don't check treesitter on java
-          }
-        })
-      end,
-    },
     { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = require('config/treesitter') },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
@@ -69,15 +82,8 @@ return function ()
     { 'tpope/vim-fugitive' },
     { 'ThePrimeagen/harpoon' },
     { 'stevearc/overseer.nvim', config = function() require('overseer').setup() end, },
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v2.x",
-      dependencies = { 
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-    },
+    { 'stevearc/oil.nvim', opts = {} ,dependencies = {'nvim-tree/nvim-web-devicons'} },
+    { 'echasnovski/mini.nvim', version = '*' },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
@@ -88,21 +94,11 @@ return function ()
 
     -- Code Snippets
     { 'L3MON4D3/LuaSnip' },
-    { 'saadparwaiz1/cmp_luasnip' },
-
-    -- Intellisense
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/nvim-cmp' },
 
     -- Language-specific Plugins
-    { 'akinsho/flutter-tools.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-    { 'ionide/Ionide-vim' },
-    { 'simrat39/rust-tools.nvim' },
+    { 'akinsho/flutter-tools.nvim', dependencies = 'nvim-lua/plenary.nvim', event = { "BufRead *.dart"} },
+    { 'ionide/Ionide-vim', event = { "BufRead *.fs"} },
     { 'lervag/vimtex' },
-    { 'elkowar/yuck.vim' },
     {
       'Saecki/crates.nvim',
       event = { "BufRead Cargo.toml" },
