@@ -1,6 +1,6 @@
 return {
   pattern = {"*.py"},
-  lsp_name = "pyright",
+  lsp_name = "jedi_language_server",
   lsp_setup_params = {},
   configs = function ()
     vim.bo.shiftwidth = 4
