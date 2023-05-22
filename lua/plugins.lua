@@ -88,6 +88,8 @@ return function ()
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
+    { 'ms-jpq/coq_nvim', version = 'coq'},
+    { 'ms-jpq/coq.artifacts', version = 'artifacts'},
 
     -- Debugging support
     { 'mfussenegger/nvim-dap' },
