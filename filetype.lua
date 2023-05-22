@@ -11,6 +11,7 @@ vim.g.markdown_fenced_languages = {
 
 local lsp_attach = require('keymaps').lsp_attach
 local lspconfig = require('lspconfig')
+local coq = require('coq')
 
 for name, filetype in pairs(require("filetypes")) do
   if filetype.pattern == nil then
@@ -19,7 +20,6 @@ for name, filetype in pairs(require("filetypes")) do
 
   local setup_params = {
     on_attach = lsp_attach,
-    capabilities = capabilities,
   }
 
   -- Hack to fix omnisharp
@@ -38,7 +38,7 @@ for name, filetype in pairs(require("filetypes")) do
       setup_params[key] = value
     end
 
-    lspconfig[filetype.lsp_name].setup(setup_params)
+    lspconfig[filetype.lsp_name].setup(coq.lsp_ensure_capabilities(setup_params))
 
     if filetype.dap_adapter_params then
       local dap = require('dap')
@@ -53,3 +53,4 @@ for name, filetype in pairs(require("filetypes")) do
   })
 end
 
+vim.cmd([[COQnow -s]])

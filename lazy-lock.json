@@ -2,6 +2,8 @@
   "Comment.nvim": { "branch": "master", "commit": "e1fe53117aab24c378d5e6deaad786789c360123" },
   "Ionide-vim": { "branch": "master", "commit": "d41ef95b9732109bf6406c5e959492f31f09ce36" },
   "LuaSnip": { "branch": "master", "commit": "ec7fba1d119fb5090a901eb616145450ffb95e31" },
+  "coq.artifacts": { "branch": "artifacts", "commit": "18bb8e1b12b8ea6f153f18ce8849e8d007af5721" },
+  "coq_nvim": { "branch": "coq", "commit": "d0523c2241f45323e2b48d45ad3b095a9f95df65" },
   "crates.nvim": { "branch": "main", "commit": "3648f8787656d7572740560331553abdaa8cb982" },
   "flutter-tools.nvim": { "branch": "main", "commit": "2b72017f369c5d80bb56bcf4379b3eccd69e2371" },
   "gruvbox.nvim": { "branch": "main", "commit": "df149bccb19a02c5c2b9fa6ec0716f0c0487feb0" },
