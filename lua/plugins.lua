@@ -88,8 +88,13 @@ return function ()
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
-    { 'ms-jpq/coq_nvim', version = 'coq'},
-    { 'ms-jpq/coq.artifacts', version = 'artifacts'},
+
+    -- Intellisense
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
+    { 'hrsh7th/nvim-cmp' },   { 'ms-jpq/coq.artifacts', version = 'artifacts'},
 
     -- Debugging support
     { 'mfussenegger/nvim-dap' },
@@ -97,11 +102,13 @@ return function ()
 
     -- Code Snippets
     { 'L3MON4D3/LuaSnip' },
+    { 'saadparwaiz1/cmp_luasnip' },
 
     -- Language-specific Plugins
     { 'akinsho/flutter-tools.nvim', dependencies = 'nvim-lua/plenary.nvim', event = { "BufRead *.dart"} },
     { 'ionide/Ionide-vim', event = { "BufRead *.fs"} },
     { 'lervag/vimtex' },
+    { 'jalvesaq/Nvim-R' },
     {
       'Saecki/crates.nvim',
       event = { "BufRead Cargo.toml" },
