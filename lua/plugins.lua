@@ -88,6 +88,7 @@ return function ()
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
+    { 'williamboman/mason.nvim', build = ":MasonUpdate", config = function() require("mason").setup() end, },
 
     -- Intellisense
     { 'hrsh7th/cmp-nvim-lsp' },

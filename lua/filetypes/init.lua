@@ -18,4 +18,5 @@ return {
   kotlin = require("filetypes/kotlin"),
   html = require("filetypes/html"),
   emmet = require("filetypes/emmet"),
+  go = require("filetypes/go"),
 }
