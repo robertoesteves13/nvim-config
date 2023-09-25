@@ -3,7 +3,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
   pattern = { "*.css", "*.html", "*.js", "*.jsx", "&.less", "*.sass", "*.scss", "*.svelte", "*.pug", "*.tsx", "*.vue" },
-  lsp_name = "emmet_ls",
+  lsp_name = "emmet_language_server",
   lsp_setup_params = {
     capabilities = capabilities,
     init_options = {

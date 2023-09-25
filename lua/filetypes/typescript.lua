@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
 return {
-  pattern = {"*.ts", "*.tsx"},
+  pattern = {"*.ts", "*.tsx", "*.js", "*.jsx"},
 
   lsp_name = "tsserver",
   lsp_setup_params = {

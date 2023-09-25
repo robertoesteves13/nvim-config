@@ -129,6 +129,8 @@ binds.setup = function()
 
   -- Browsing stuff
   binds.nmap('<leader>ff', '<cmd>Telescope find_files<CR>')
+  binds.nmap('<leader>fg', '<cmd>Telescope live_grep<CR>')
+  binds.nmap('<leader>fs', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
   binds.nmap('<leader>fb', '<cmd>Telescope buffers<CR>')
 
   -- Refactoring
