@@ -19,6 +19,7 @@ return {
   html = require("filetypes/html"),
   emmet = require("filetypes/emmet"),
   go = require("filetypes/go"),
+  sql = require("filetypes/sql"),
   nix = require("filetypes/nix"),
   meson = require("filetypes/meson"),
 }
