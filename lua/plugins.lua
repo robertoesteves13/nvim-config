@@ -26,16 +26,12 @@ return function ()
     { 'nvim-lualine/lualine.nvim', config = function() require("config/lualine")() end },
     { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'onsails/lspkind.nvim' },
-    { 'lukas-reineke/indent-blankline.nvim', config = function()
-      require("ibl").setup({
-        space_char_blankline = " ",
-        show_current_context = true,
-        show_current_context_start = true,
-      })
-
+    { 'lukas-reineke/indent-blankline.nvim', main = "ibl", config = function()
+      require("ibl").setup({})
       -- Hack to load colorscheme properly in the plugin
       vim.cmd([[colorscheme gruvbox]])
-    end },
+    end
+  },
     { 'vigoux/notifier.nvim', config = function() require('notifier').setup{
         components = {
           'nvim',
