@@ -1,4 +1,4 @@
-return function ()
+return function()
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
   if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -15,87 +15,122 @@ return function ()
   local plugins = {
     -- Colorschemes
     { 'folke/tokyonight.nvim' },
-		{ "ellisonleao/gruvbox.nvim" },
-    { "catppuccin/nvim", as = "catppuccin" },
+    { "ellisonleao/gruvbox.nvim" },
+    { "catppuccin/nvim",                           as = "catppuccin" },
     { "jacoborus/tender.vim" },
     { "savq/melange-nvim" },
     { 'almo7aya/neogruvbox.nvim' },
 
     -- Make Neovim look dope
-    { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, config = require('config/telescope')},
-    { 'nvim-lualine/lualine.nvim', config = function() require("config/lualine")() end },
+    { 'nvim-telescope/telescope.nvim',             dependencies = { 'nvim-lua/plenary.nvim' },
+                                                                                                         config = require(
+      'config/telescope') },
+    { 'nvim-lualine/lualine.nvim',                 config = function() require("config/lualine")() end },
     { 'nvim-telescope/telescope-file-browser.nvim' },
     { 'onsails/lspkind.nvim' },
-    { 'lukas-reineke/indent-blankline.nvim', main = "ibl", config = function()
-      require("ibl").setup({})
-      -- Hack to load colorscheme properly in the plugin
-      vim.cmd([[colorscheme gruvbox]])
-    end
-  },
-    { 'vigoux/notifier.nvim', config = function() require('notifier').setup{
-        components = {
-          'nvim',
-          'lsp',
+    {
+      'lukas-reineke/indent-blankline.nvim',
+      main = "ibl",
+      config = function()
+        require("ibl").setup({})
+        -- Hack to load colorscheme properly in the plugin
+        vim.cmd([[colorscheme gruvbox]])
+      end
+    },
+    {
+      'vigoux/notifier.nvim',
+      config = function()
+        require('notifier').setup {
+          components = {
+            'nvim',
+            'lsp',
+          }
         }
-    } end },
+      end
+    },
     -- Discord Rich Presence
-    { 'andweeb/presence.nvim', config = function () require('presence').setup({
-      main_image = "file",
-    }) end},
+    {
+      'andweeb/presence.nvim',
+      config = function()
+        require('presence').setup({
+          main_image = "file",
+        })
+      end
+    },
     {
       "lewis6991/hover.nvim",
       config = function()
-          require("hover").setup {
-              init = function()
-                  -- Require providers
-                  require("hover.providers.lsp")
-                  -- require('hover.providers.gh')
-                  -- require('hover.providers.gh_user')
-                  -- require('hover.providers.jira')
-                  -- require('hover.providers.man')
-                  -- require('hover.providers.dictionary')
-              end,
-              preview_opts = {
-                  border = nil
-              },
-              -- Whether the contents of a currently open hover window should be moved
-              -- to a :h preview-window when pressing the hover keymap.
-              preview_window = false,
-              title = true
-          }
+        require("hover").setup {
+          init = function()
+            -- Require providers
+            require("hover.providers.lsp")
+            -- require('hover.providers.gh')
+            -- require('hover.providers.gh_user')
+            -- require('hover.providers.jira')
+            -- require('hover.providers.man')
+            -- require('hover.providers.dictionary')
+          end,
+          preview_opts = {
+            border = nil
+          },
+          -- Whether the contents of a currently open hover window should be moved
+          -- to a :h preview-window when pressing the hover keymap.
+          preview_window = false,
+          title = true
+        }
 
-          -- Setup keymaps
-          vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
-          vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
+        -- Setup keymaps
+        vim.keymap.set("n", "K", require("hover").hover, { desc = "hover.nvim" })
+        vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
       end
+    },
+    {
+      'kristijanhusak/vim-dadbod-ui',
+      dependencies = {
+        { 'tpope/vim-dadbod',                     lazy = true },
+        { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+      },
+      cmd = {
+        'DBUI',
+        'DBUIToggle',
+        'DBUIAddConnection',
+        'DBUIFindBuffer',
+      },
+      init = function()
+        -- Your DBUI configuration
+        vim.g.db_ui_use_nerd_fonts = 1
+      end,
     },
 
     -- Make coding enjoyable
-    { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', config = require('config/treesitter') },
-    { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor') },
+    { 'numToStr/Comment.nvim',           config = function() require('Comment').setup() end },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate',                                 config = require(
+    'config/treesitter') },
+    { 'ThePrimeagen/refactoring.nvim',   config = require('config/refactor') },
     { 'folke/trouble.nvim' },
     { 'tpope/vim-fugitive' },
     { 'ThePrimeagen/harpoon' },
-    { 'stevearc/overseer.nvim', config = function() require('overseer').setup() end, },
-    { 'stevearc/oil.nvim', opts = {} ,dependencies = {'nvim-tree/nvim-web-devicons'} },
-    { 'echasnovski/mini.nvim', version = '*' },
-    { 'akinsho/toggleterm.nvim', version = "*", config = true },
+    { 'stevearc/overseer.nvim',          config = function() require('overseer').setup() end, },
+    { 'stevearc/oil.nvim',               opts = {},                                           dependencies = {
+      'nvim-tree/nvim-web-devicons' } },
+    { 'echasnovski/mini.nvim',           version = '*' },
+    { 'akinsho/toggleterm.nvim',         version = "*",                                       config = true },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
-    { 'williamboman/mason.nvim', build = ":MasonUpdate", config = function() require("mason").setup() end, },
+    { 'williamboman/mason.nvim',         build = ":MasonUpdate",                              config = function() require(
+      "mason").setup() end, },
 
     -- Intellisense
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/nvim-cmp' },   { 'ms-jpq/coq.artifacts', version = 'artifacts'},
+    { 'hrsh7th/nvim-cmp' }, { 'ms-jpq/coq.artifacts', version = 'artifacts' },
 
     -- Debugging support
     { 'mfussenegger/nvim-dap' },
-    { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} },
+    { "rcarriga/nvim-dap-ui",           requires = { "mfussenegger/nvim-dap" } },
     { 'theHamsta/nvim-dap-virtual-text' },
 
     -- Code Snippets
@@ -103,15 +138,15 @@ return function ()
     { 'saadparwaiz1/cmp_luasnip' },
 
     -- Language-specific Plugins
-    { 'akinsho/flutter-tools.nvim', dependencies = 'nvim-lua/plenary.nvim', event = { "BufRead *.dart"} },
-    { 'ionide/Ionide-vim', event = { "BufRead *.fs"} },
+    { 'akinsho/flutter-tools.nvim',     dependencies = 'nvim-lua/plenary.nvim', event = { "BufRead *.dart" } },
+    { 'ionide/Ionide-vim',              event = { "BufRead *.fs" } },
     { 'lervag/vimtex' },
     { 'jalvesaq/Nvim-R' },
     {
       'Saecki/crates.nvim',
       event = { "BufRead Cargo.toml" },
       dependencies = 'nvim-lua/plenary.nvim',
-      config = function ()
+      config = function()
         local crates = require('crates')
         local opts = { silent = true }
 

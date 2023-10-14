@@ -134,6 +134,9 @@ binds.setup = function()
   binds.nmap('<leader>fs', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>')
   binds.nmap('<leader>fb', '<cmd>Telescope buffers<CR>')
 
+  -- Database
+  binds.nmap('<leader>c', '<cmd>DBUIToggle<CR>')
+
   -- Refactoring
   binds.vmap('<leader>re', [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR> ]])
   binds.vmap('<leader>rf', [[<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR> ]])
