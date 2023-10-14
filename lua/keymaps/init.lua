@@ -19,6 +19,7 @@ binds.lsp_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dsi', '<cmd>lua require\'dap\'.step_into()<CR>', binds.params)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dw', '<cmd>lua require\'dap\'.repl.open()<CR>', binds.params)
 
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>di', '<cmd>lua require\'dapui\'.toggle()<CR>', binds.params)
   -- Hack to fix omnisharp's broken semantic highlighting
   if client.name == "omnisharp" then
     client.server_capabilities.semanticTokensProvider = {

@@ -15,7 +15,8 @@ local capabilities = require('config/cmp').capabilities
 
 for name, filetype in pairs(require("filetypes")) do
   if filetype.pattern == nil then
-    print('WARNING: Filetype pattern for ' .. name .. ' not set, it might override the buffer config!')
+    print('WARNING: Filetype pattern for ' .. name .. ' not set, skipping configuration...')
+    goto continue
   end
 
   local setup_params = {
@@ -41,9 +42,9 @@ for name, filetype in pairs(require("filetypes")) do
 
     lspconfig[filetype.lsp_name].setup(setup_params)
 
-    if filetype.dap_adapter_params then
+    if filetype.dap_name then
       local dap = require('dap')
-      dap.adapters[name] = filetype.dap_adapter_params
+      dap.adapters[filetype.dap_name] = filetype.dap_adapter_params
       dap.configurations[name] = filetype.dap_configuration_params
     end
   end
@@ -52,4 +53,5 @@ for name, filetype in pairs(require("filetypes")) do
     pattern = filetype.pattern,
     callback = filetype.configs
   })
+  ::continue::
 end

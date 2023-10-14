@@ -4,10 +4,12 @@ return {
   lsp_name = "clangd",
   lsp_setup_params = {},
 
+  dap_name = "codelldb",
   dap_adapter_params = {
     type = 'executable',
     command = 'lldb-vscode'
   },
+
   dap_configuration_params = {
     {
       name = "Debug program",
