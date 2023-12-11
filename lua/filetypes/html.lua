@@ -2,11 +2,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
-  pattern = { "*.html" },
+  pattern = { "*.html", "*.templ" },
   lsp_name = "html",
   lsp_setup_params = {
     capabilities = capabilities,
-    filetypes = { "html", "htmldjango" }
+    filetypes = { "html", "htmldjango", "templ" }
   },
 
   configs = function()

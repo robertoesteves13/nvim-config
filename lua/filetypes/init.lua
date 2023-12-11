@@ -17,9 +17,11 @@ return {
   haskell = require("filetypes/haskell"),
   kotlin = require("filetypes/kotlin"),
   html = require("filetypes/html"),
+  htmx = require("filetypes/htmx"),
   emmet = require("filetypes/emmet"),
   go = require("filetypes/go"),
   sql = require("filetypes/sql"),
   nix = require("filetypes/nix"),
   meson = require("filetypes/meson"),
+  templ = require("filetypes/templ"),
 }
