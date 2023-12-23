@@ -1,3 +1,5 @@
+-- Map leader key before Lazy sets up keybindings
+vim.g.mapleader = ' '
 require('plugins')()
 
 vim.o.background = "dark"
@@ -15,7 +17,6 @@ vim.g.neovide_cursor_vfx_mode = "wireframe"
 vim.g.neovide_refresh_rate = "120"
 vim.g.neovide_cursor_trail_length = "0.1"
 
-vim.g.mapleader = " "
 
 vim.g.asyncrun_open = 6
 
@@ -37,6 +38,8 @@ vim.o.smartcase = true
 vim.o.filetype = true
 vim.o.do_filetype_lua = 1
 
+vim.o.listchars = 'tab:>--,trail:-,nbsp:+,leadmultispace:  |'
+
 vim.cmd([[set colorcolumn=80]])
 
 vim.wo.number = true
@@ -54,8 +57,4 @@ require('config/dap')()
 require('config/cmp').setup()
 
 require('mini.starter').setup()
-require('mini.tabline').setup()
 require('mini.pairs').setup()
-
--- Keymaps
-require('keymaps/init').setup()
