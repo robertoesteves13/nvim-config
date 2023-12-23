@@ -54,7 +54,6 @@ vim.opt.list = true
 
 -- Configurations
 require('config/dap')()
-require('config/cmp').setup()
 
 require('mini.starter').setup()
 require('mini.pairs').setup()

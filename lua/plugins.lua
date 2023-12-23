@@ -33,7 +33,7 @@ return function()
     },
     { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim' }, lazy = true },
 
-    { 'onsails/lspkind.nvim' },
+    { 'onsails/lspkind.nvim',                       after = 'neovim/nvim-lspconfig' },
     {
       'vigoux/notifier.nvim',
       config = require('config/notifier')
@@ -45,7 +45,8 @@ return function()
     },
     {
       "lewis6991/hover.nvim",
-      config = require('config/hover_nvim')
+      config = require('config/hover_nvim'),
+      keys = require('keymaps.hover_nvim')
     },
     {
       'kristijanhusak/vim-dadbod-ui',
@@ -75,11 +76,11 @@ return function()
       config = require(
         'config/treesitter')
     },
-    { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true, keys = require('keymaps.refactoring') },
+    { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
     { 'folke/trouble.nvim',            lazy = true },
-    { 'tpope/vim-fugitive',            lazy = true, keys = require('keymaps.fugitive')},
-    { 'ThePrimeagen/harpoon',          lazy = true, keys = require('keymaps.harpoon')},
-    { 'stevearc/overseer.nvim',        opts = {},                           lazy = true, keys = require('keymaps.overseer') },
+    { 'tpope/vim-fugitive',            lazy = true,                         keys = require('keymaps.fugitive') },
+    { 'ThePrimeagen/harpoon',          lazy = true,                         keys = require('keymaps.harpoon') },
+    { 'stevearc/overseer.nvim',        opts = {},                           lazy = true,                       keys = require('keymaps.overseer') },
     {
       'stevearc/oil.nvim',
       opts = {},
@@ -98,25 +99,23 @@ return function()
     },
 
     -- Intellisense
+    { 'hrsh7th/nvim-cmp', config = require('config.cmp')},
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/nvim-cmp' },
+    { 'dcampos/nvim-snippy', config = require('config.snippy') },
+    { 'dcampos/cmp-snippy'},
 
     -- Debugging support
     { 'mfussenegger/nvim-dap' },
     { "rcarriga/nvim-dap-ui",           dependencies = { "mfussenegger/nvim-dap" } },
     { 'theHamsta/nvim-dap-virtual-text' },
 
-    -- Code Snippets
-    { 'L3MON4D3/LuaSnip' },
-    { 'saadparwaiz1/cmp_luasnip' },
-
     -- Language-specific Plugins
     { 'akinsho/flutter-tools.nvim',     dependencies = { 'nvim-lua/plenary.nvim' }, event = { "BufRead *.dart" }, lazy = true },
-    { 'ionide/Ionide-vim',              event = { "BufRead *.fs" },                lazy = true },
-    { 'lervag/vimtex',                  event = "BufRead *.tex",                   lazy = true },
+    { 'ionide/Ionide-vim',              event = { "BufRead *.fs" },                 lazy = true },
+    { 'lervag/vimtex',                  event = "BufRead *.tex",                    lazy = true },
     {
       'Saecki/crates.nvim',
       event = { "BufRead Cargo.toml" },

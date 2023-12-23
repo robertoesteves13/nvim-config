@@ -1,0 +1,10 @@
+snippet #http.500
+	if ${1:name} != nil {
+		http.Error(w, "internal server error", 500)
+		return
+	}
+snippet #http.func
+	func ${1:name}(w http.ResponseWriter, r *http.Request) {
+	}
+snippet #templ.serve
+	templ.Handler(${1:component}(${2:params})).ServeHTTP(w, r)

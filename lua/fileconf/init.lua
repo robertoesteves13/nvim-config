@@ -1,7 +1,3 @@
-local lspconfig = require('lspconfig')
-local capabilities = require('config/cmp').capabilities
-local dap = require('dap')
-
 local function lsp_attach(client, bufnr)
   local params = {
     noremap = true,
@@ -101,11 +97,6 @@ local function lsp_attach(client, bufnr)
   end
 end
 
-local setup_params = {
-  on_attach = lsp_attach,
-  capabilities = capabilities
-}
-
 ---@class LanguageConfig
 ---@field pattern string[]
 --
@@ -123,6 +114,15 @@ local LanguageConfig = {}
 ---@param name string
 ---@param conf LanguageConfig
 local function Setup(name, conf)
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local lspconfig = require('lspconfig')
+  local dap = require('dap')
+
+  local setup_params = {
+    on_attach = lsp_attach,
+    capabilities = capabilities
+  }
+
   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     pattern = conf.pattern,
     callback = function()
