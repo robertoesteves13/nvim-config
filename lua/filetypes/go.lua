@@ -1,7 +1,20 @@
 return {
   pattern = { "*.go", "go.mod", "go.sum" },
   lsp_name = "gopls",
-  lsp_setup_params = {},
+  lsp_setup_params = {
+    settings = {
+      ['gopls'] = {
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          constantValues = true,
+          functionTypeParameters = false,
+          parameterNames = false,
+          rangeVariableTypes = true
+        }
+      }
+    }
+  },
 
   dap_name = "delve",
   dap_adapter_params = {

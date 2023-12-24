@@ -11,12 +11,11 @@ vim.api.nvim_set_var('&t_8f', '<Esc>[38;2;%lu;%lu;%lum')
 vim.api.nvim_set_var('&t_8f', '<Esc>[48;2;%lu;%lu;%lum')
 
 -- Neovide stuff
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd [[colorscheme gruvbox]]
 vim.opt.guifont = "FiraCode Nerd Font:h11"
 vim.g.neovide_cursor_vfx_mode = "wireframe"
 vim.g.neovide_refresh_rate = "120"
 vim.g.neovide_cursor_trail_length = "0.1"
-
 
 vim.g.asyncrun_open = 6
 
@@ -38,10 +37,8 @@ vim.o.smartcase = true
 vim.o.filetype = true
 vim.o.do_filetype_lua = 1
 
-vim.o.listchars = 'tab:>--,trail:-,nbsp:+,leadmultispace:  |'
-
-vim.cmd([[set colorcolumn=80]])
-
+vim.o.listchars = 'tab:  >,trail:-,nbsp:+,leadmultispace:  |'
+vim.wo.colorcolumn = "80"
 vim.wo.number = true
 vim.wo.relativenumber = true
 

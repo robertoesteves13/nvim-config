@@ -1,10 +1,16 @@
 # READ THIS BEFORE USING IT
-Because of depending on a bleeding-edge version of neovim, things may be easily breakable since I don't freeze the plugins into a working state (might do that later). I don't guarantee to update fast if some plugin breaks, instead you should rely on other neovim configurations with saner defaults such as [LunarVim](https://github.com/LunarVim/LunarVim) or [NvChad](https://github.com/NvChad/NvChad)
+Because of depending on a bleeding-edge version of neovim, things may be easily
+breakable since I don't freeze the plugins into a working state (might do that later).
+I don't guarantee to update fast if some plugin breaks, instead you should rely
+on other neovim configurations with saner defaults such as
+[LunarVim](https://github.com/LunarVim/LunarVim) or [NvChad](https://github.com/NvChad/NvChad).
 
 ## Dependencies
+- Git
 - Neovim Nightly (Always check for latest version)
+- C Toolchain
+- CMake
 - Treesitter
-- MinGW (Windows only)
 
 ## Installation
 > Linux

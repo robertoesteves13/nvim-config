@@ -20,6 +20,9 @@ return function()
     { "jacoborus/tender.vim",     lazy = true },
     { "savq/melange-nvim",        lazy = true },
 
+    -- Make writing configs easier
+    { "folke/neodev.nvim", config = require('config.neodev'), },
+
     -- Make Neovim look dope
     {
       'nvim-telescope/telescope.nvim',
@@ -32,16 +35,20 @@ return function()
       config = require("config/lualine")
     },
     { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim' }, lazy = true },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build =
+      'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+      dependencies = { 'nvim-telescope/telescope.nvim' },
+      lazy = true,
+    },
+    { 'nvim-telescope/telescope-dap.nvim',          dependencies = { 'nvim-telescope/telescope.nvim' }, lazy = true },
 
-    { 'onsails/lspkind.nvim',                       after = 'neovim/nvim-lspconfig' },
+    { 'onsails/lspkind.nvim',                       dependencies = 'neovim/nvim-lspconfig' },
     {
       'vigoux/notifier.nvim',
-      config = require('config/notifier')
-    },
-    -- Discord Rich Presence
-    {
-      'andweeb/presence.nvim',
-      config = require('config/discord_rp')
+      config = require('config/notifier'),
+      dependencies = { 'neovim/nvim-lspconfig', 'hrsh7th/nvim-cmp' }
     },
     {
       "lewis6991/hover.nvim",
@@ -69,7 +76,7 @@ return function()
     },
 
     -- Make coding enjoyable
-    { 'numToStr/Comment.nvim',         opts = {},                           lazy = true },
+    { 'numToStr/Comment.nvim',         opts = {} },
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
@@ -93,29 +100,33 @@ return function()
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
     {
+      'lvimuser/lsp-inlayhints.nvim',
+      config = require('config.lsp_inlayhints'),
+    },
+    {
       'williamboman/mason.nvim',
       build = ":MasonUpdate",
       opts = {},
     },
 
     -- Intellisense
-    { 'hrsh7th/nvim-cmp', config = require('config.cmp')},
+    { 'hrsh7th/nvim-cmp',               config = require('config.cmp') },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-cmdline' },
-    { 'dcampos/nvim-snippy', config = require('config.snippy') },
-    { 'dcampos/cmp-snippy'},
+    { 'dcampos/nvim-snippy',            config = require('config.snippy') },
+    { 'dcampos/cmp-snippy' },
 
     -- Debugging support
     { 'mfussenegger/nvim-dap' },
-    { "rcarriga/nvim-dap-ui",           dependencies = { "mfussenegger/nvim-dap" } },
     { 'theHamsta/nvim-dap-virtual-text' },
+    { 'rcarriga/nvim-dap-ui', config = require('config.dapui') },
 
     -- Language-specific Plugins
-    { 'akinsho/flutter-tools.nvim',     dependencies = { 'nvim-lua/plenary.nvim' }, event = { "BufRead *.dart" }, lazy = true },
-    { 'ionide/Ionide-vim',              event = { "BufRead *.fs" },                 lazy = true },
-    { 'lervag/vimtex',                  event = "BufRead *.tex",                    lazy = true },
+    { 'akinsho/flutter-tools.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = { "BufRead *.dart" }, lazy = true },
+    { 'ionide/Ionide-vim',          event = { "BufRead *.fs" },                 lazy = true },
+    { 'lervag/vimtex',              event = "BufRead *.tex",                    lazy = true },
     {
       'Saecki/crates.nvim',
       event = { "BufRead Cargo.toml" },

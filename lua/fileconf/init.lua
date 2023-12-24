@@ -5,19 +5,11 @@ local function lsp_attach(client, bufnr)
   }
 
   -- LSP
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', params)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', params)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', params)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.format()<CR>', params)
-
   -- DAP
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>da', '<cmd>lua require\'dap\'.toggle_breakpoint()<CR>', params)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dc', '<cmd>lua require\'dap\'.continue()<CR>', params)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dso', '<cmd>lua require\'dap\'.step_over()<CR>', params)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dsi', '<cmd>lua require\'dap\'.step_into()<CR>', params)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dw', '<cmd>lua require\'dap\'.repl.open()<CR>', params)
-
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>di', '<cmd>lua require\'dapui\'.toggle()<CR>', params)
   -- Hack to fix omnisharp's broken semantic highlighting
   if client.name == "omnisharp" then
     client.server_capabilities.semanticTokensProvider = {
@@ -109,45 +101,52 @@ end
 --
 ---@field configs function
 ---@field run_once function?
+---@field run_once_check boolean,
 local LanguageConfig = {}
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require('lspconfig')
+local dap = require('dap')
 
 ---@param name string
 ---@param conf LanguageConfig
-local function Setup(name, conf)
-  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-  local lspconfig = require('lspconfig')
-  local dap = require('dap')
-
+local function SetupLang(name, conf)
   local setup_params = {
     on_attach = lsp_attach,
     capabilities = capabilities
   }
 
+  if conf.lsp_name then
+    for key, value in pairs(conf.lsp_setup_params) do
+      setup_params[key] = value
+    end
+    lspconfig[conf.lsp_name].setup(setup_params)
+  end
+
+  if conf.dap_name then
+    dap.adapters[conf.dap_name] = conf.dap_adapter_params
+    dap.configurations[name] = conf.dap_configuration_params
+  end
+
   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     pattern = conf.pattern,
     callback = function()
-      if conf.run_once then
+      conf.configs()
+      if conf.run_once_check then
+        conf.run_once_check = false
         conf.run_once()
       end
-
-      if conf.lsp_name then
-        for key, value in pairs(conf.lsp_setup_params) do
-          setup_params[key] = value
-        end
-        lspconfig[conf.lsp_name].setup(setup_params)
-      end
-
-      if conf.dap_name then
-        dap.adapters[conf.dap_name] = conf.dap_adapter_params
-        dap.configurations[name] = conf.dap_configuration_params
-      end
-
-      conf.configs()
     end
   })
 end
 
+local function Setup()
+  for name, filetype in pairs(require("filetypes")) do
+    SetupLang(name, filetype)
+  end
+end
+
 
 return {
-  bindLanguage = Setup
+  setup = Setup
 }

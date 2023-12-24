@@ -4,6 +4,7 @@ return {
     vim.bo.shiftwidth = 2
     vim.bo.tabstop = 2
   end,
+  run_once_check = true,
   run_once = function ()
     local lsp_attach = require('keymaps').lsp_attach
 
