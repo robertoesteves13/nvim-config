@@ -1,10 +1,30 @@
 snippet #http.500
-	if ${1:name} != nil {
-		http.Error(w, "internal server error", 500)
-		return
-	}
+	http.Error(w, "internal server error", http.StatusInternalServerError)
 snippet #http.func
 	func ${1:name}(w http.ResponseWriter, r *http.Request) {
 	}
 snippet #templ.serve
 	templ.Handler(${1:component}(${2:params})).ServeHTTP(w, r)
+snippet #stmt.rows
+	${1:query}, ${2:params} := stmt.Sql()
+	rows, err := conn.Query(ctx, ${1:query}, ${2:params}...)
+snippet #db.exec
+	${3:tag}, err := conn.Exec(ctx, ${1:query}, ${2:params}...)
+snippet #db.conn
+	conn, err := ${1:database}.${2:GetConnection}(${3:ctx})
+	if err != nil {
+		${3:handleErr}
+	}
+	defer conn.Release()
+snippet #db.rows
+	var list []${1:type}
+	for rows.Next() {
+		var data ${1:type}
+		rows.Scan(${2:vals})
+		list = append(list, data)
+	}
+snippet #err
+	if err != nil {
+		log.Println(err)
+		${3:handleErr}
+	}
