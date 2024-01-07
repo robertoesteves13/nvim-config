@@ -74,7 +74,7 @@ return function()
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
-      event = { "BufEnter" },
+      event = { "UIEnter" },
       config = require( 'config/treesitter')
     },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
@@ -98,10 +98,9 @@ return function()
       end,
       event = { "LspAttach" },
     },
-    { 'dcampos/nvim-snippy',  opts = {} },
 
     -- LSP Support
-    { 'neovim/nvim-lspconfig' },
+    { 'neovim/nvim-lspconfig', event = { "UIEnter "} },
     {
       'lvimuser/lsp-inlayhints.nvim',
       event = { "LspAttach" },
@@ -110,6 +109,7 @@ return function()
     {
       'williamboman/mason.nvim',
       build = ":MasonUpdate",
+      event = { "UIEnter "},
       opts = {},
     },
 
