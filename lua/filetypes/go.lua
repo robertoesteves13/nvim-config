@@ -11,7 +11,14 @@ return {
           functionTypeParameters = false,
           parameterNames = false,
           rangeVariableTypes = true
-        }
+        },
+
+        experimentalPostfixCompletions = true,
+        analyses = {
+          unusedparams = true,
+          shadow = true,
+        },
+        staticcheck = true,
       }
     }
   },

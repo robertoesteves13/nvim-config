@@ -36,6 +36,7 @@ vim.o.smartcase = true
 
 vim.o.filetype = true
 vim.o.do_filetype_lua = 1
+vim.o.did_load_filetypes = 0
 
 vim.o.listchars = 'tab:  >,trail:-,nbsp:+,leadmultispace:  |'
 vim.wo.colorcolumn = "80"
@@ -54,3 +55,4 @@ require('config/dap')()
 
 require('mini.starter').setup()
 require('mini.pairs').setup()
+require('mini.statusline').setup()

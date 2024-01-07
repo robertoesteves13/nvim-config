@@ -20,9 +20,6 @@ return function()
     { "jacoborus/tender.vim",     lazy = true },
     { "savq/melange-nvim",        lazy = true },
 
-    -- Make writing configs easier
-    { "folke/neodev.nvim", config = require('config.neodev'), },
-
     -- Make Neovim look dope
     {
       'nvim-telescope/telescope.nvim',
@@ -30,10 +27,7 @@ return function()
       config = require('config.telescope'),
       keys = require('keymaps.telescope'),
     },
-    {
-      'nvim-lualine/lualine.nvim',
-      config = require("config/lualine")
-    },
+
     { 'nvim-telescope/telescope-file-browser.nvim', dependencies = { 'nvim-telescope/telescope.nvim' }, lazy = true },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -46,9 +40,9 @@ return function()
 
     { 'onsails/lspkind.nvim',                       dependencies = 'neovim/nvim-lspconfig' },
     {
-      'vigoux/notifier.nvim',
-      config = require('config/notifier'),
-      dependencies = { 'neovim/nvim-lspconfig', 'hrsh7th/nvim-cmp' }
+      "j-hui/fidget.nvim",
+      event = { "LspAttach" },
+      opts = {},
     },
     {
       "lewis6991/hover.nvim",
@@ -76,15 +70,15 @@ return function()
     },
 
     -- Make coding enjoyable
-    { 'numToStr/Comment.nvim',         opts = {} },
+    { 'numToStr/Comment.nvim',         opts = {},                           keys = require('keymaps.comment') },
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
-      config = require(
-        'config/treesitter')
+      event = { "BufEnter" },
+      config = require( 'config/treesitter')
     },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
-    { 'folke/trouble.nvim',            lazy = true },
+    { 'folke/trouble.nvim',            lazy = true,                         event = { "LspAttach" } },
     { 'tpope/vim-fugitive',            lazy = true,                         keys = require('keymaps.fugitive') },
     { 'ThePrimeagen/harpoon',          lazy = true,                         keys = require('keymaps.harpoon') },
     { 'stevearc/overseer.nvim',        opts = {},                           lazy = true,                       keys = require('keymaps.overseer') },
@@ -96,12 +90,22 @@ return function()
     },
     { 'echasnovski/mini.nvim',   version = '*' },
     { 'akinsho/toggleterm.nvim', version = "*", config = true, keys = require('keymaps.toggleterm') },
+    {
+      'ms-jpq/coq_nvim',
+      build = ':COQdeps',
+      config = function()
+        vim.cmd [[ COQnow ]]
+      end,
+      event = { "LspAttach" },
+    },
+    { 'dcampos/nvim-snippy',  opts = {} },
 
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
     {
       'lvimuser/lsp-inlayhints.nvim',
-      config = require('config.lsp_inlayhints'),
+      event = { "LspAttach" },
+      opts = {},
     },
     {
       'williamboman/mason.nvim',
@@ -109,19 +113,14 @@ return function()
       opts = {},
     },
 
-    -- Intellisense
-    { 'hrsh7th/nvim-cmp',               config = require('config.cmp') },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'dcampos/nvim-snippy',            config = require('config.snippy') },
-    { 'dcampos/cmp-snippy' },
-
     -- Debugging support
     { 'mfussenegger/nvim-dap' },
     { 'theHamsta/nvim-dap-virtual-text' },
-    { 'rcarriga/nvim-dap-ui', config = require('config.dapui') },
+    {
+      'rcarriga/nvim-dap-ui',
+      opts = {},
+      keys = require('keymaps.dapui'),
+    },
 
     -- Language-specific Plugins
     { 'akinsho/flutter-tools.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = { "BufRead *.dart" }, lazy = true },
