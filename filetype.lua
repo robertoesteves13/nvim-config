@@ -99,9 +99,7 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
 
-vim.api.nvim_create_autocmd("UIEnter", {
-  callback = require('fileconf').setup
-})
+require('fileconf').setup()
 
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 

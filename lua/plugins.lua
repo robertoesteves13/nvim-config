@@ -38,7 +38,6 @@ return function()
     },
     { 'nvim-telescope/telescope-dap.nvim',          dependencies = { 'nvim-telescope/telescope.nvim' }, lazy = true },
 
-    { 'onsails/lspkind.nvim',                       dependencies = 'neovim/nvim-lspconfig' },
     {
       "j-hui/fidget.nvim",
       event = { "LspAttach" },
@@ -75,7 +74,7 @@ return function()
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
       event = { "UIEnter" },
-      config = require( 'config/treesitter')
+      config = require('config/treesitter')
     },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
     { 'folke/trouble.nvim',            lazy = true,                         event = { "LspAttach" } },
@@ -88,19 +87,22 @@ return function()
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       keys = require('keymaps.oil'),
     },
-    { 'echasnovski/mini.nvim',   version = '*' },
-    { 'akinsho/toggleterm.nvim', version = "*", config = true, keys = require('keymaps.toggleterm') },
+    { 'echasnovski/mini.nvim', version = '*' },
     {
       'ms-jpq/coq_nvim',
       build = ':COQdeps',
-      config = function()
-        vim.cmd [[ COQnow ]]
+      init = function()
+        vim.g.coq_settings = {
+          auto_start = true,
+          xdg = true,
+          ['display.pum.fast_close'] = false,
+        }
       end,
       event = { "LspAttach" },
     },
 
     -- LSP Support
-    { 'neovim/nvim-lspconfig', event = { "UIEnter "} },
+    { 'neovim/nvim-lspconfig' },
     {
       'lvimuser/lsp-inlayhints.nvim',
       event = { "LspAttach" },
@@ -109,15 +111,17 @@ return function()
     {
       'williamboman/mason.nvim',
       build = ":MasonUpdate",
-      event = { "UIEnter "},
       opts = {},
     },
 
     -- Debugging support
-    { 'mfussenegger/nvim-dap' },
-    { 'theHamsta/nvim-dap-virtual-text' },
     {
       'rcarriga/nvim-dap-ui',
+      event = { "UIEnter" },
+      dependencies = {
+        { 'mfussenegger/nvim-dap' },
+        { 'theHamsta/nvim-dap-virtual-text' },
+      },
       opts = {},
       keys = require('keymaps.dapui'),
     },
