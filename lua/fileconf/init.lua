@@ -38,10 +38,12 @@ local function SetupLang(name, conf)
   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
     pattern = conf.pattern,
     callback = function()
-      conf.configs()
-      if conf.run_once_check then
-        conf.run_once_check = false
-        conf.run_once()
+      if conf.configs ~= nil then
+        conf.configs()
+        if conf.run_once_check then
+          conf.run_once_check = false
+          conf.run_once()
+        end
       end
     end
   })

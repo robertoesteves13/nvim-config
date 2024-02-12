@@ -3,6 +3,7 @@ return {
   c = require("filetypes/c"),
   cpp = require("filetypes/cpp"),
   css = require("filetypes/css"),
+  tailwind = require("filetypes/tailwind"),
   rust = require("filetypes/rust"),
   python = require("filetypes/python"),
   deno = require("filetypes/deno"),
@@ -24,4 +25,5 @@ return {
   nix = require("filetypes/nix"),
   meson = require("filetypes/meson"),
   templ = require("filetypes/templ"),
+  vue = require("filetypes/vue"),
 }

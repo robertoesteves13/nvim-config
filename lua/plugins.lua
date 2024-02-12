@@ -136,6 +136,7 @@ return function()
       dependencies = 'nvim-lua/plenary.nvim',
       config = require('config/crates_nvim'),
     },
+    { 'sbdchd/neoformat' },
   }
 
   require("lazy").setup(plugins)
