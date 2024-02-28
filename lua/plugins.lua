@@ -88,19 +88,6 @@ return function()
       keys = require('keymaps.oil'),
     },
     { 'echasnovski/mini.nvim', version = '*' },
-    {
-      'ms-jpq/coq_nvim',
-      build = ':COQdeps',
-      init = function()
-        vim.g.coq_settings = {
-          auto_start = true,
-          xdg = true,
-          ['display.pum.fast_close'] = false,
-        }
-      end,
-      event = { "LspAttach" },
-    },
-
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
     {
@@ -112,6 +99,26 @@ return function()
       'williamboman/mason.nvim',
       build = ":MasonUpdate",
       opts = {},
+    },
+    {
+      'hrsh7th/nvim-cmp',
+      event = { "LspAttach" },
+      config = require("config.cmp"),
+      dependencies = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lsp',
+        "L3MON4D3/LuaSnip",
+        'saadparwaiz1/cmp_luasnip',
+        'onsails/lspkind.nvim',
+      }
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      event = { "LspAttach" },
+      version = "v2.*",
+      build = "make install_jsregexp"
     },
 
     -- Debugging support

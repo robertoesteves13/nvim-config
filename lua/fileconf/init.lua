@@ -19,8 +19,9 @@ local dap = require('dap')
 ---@param name string
 ---@param conf LanguageConfig
 local function SetupLang(name, conf)
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local setup_params = {
-    capabilites = require('coq').lsp_ensure_capabilities()
+    capabilites = capabilities
   }
 
   if conf.lsp_name then
