@@ -67,7 +67,22 @@ return function()
       keys = require('keymaps.dadbod'),
       lazy = true,
     },
-
+    {
+      "michaelrommel/nvim-silicon",
+      lazy = true,
+      cmd = "Silicon",
+      config = function()
+        require("silicon").setup({
+          font = "FiraCode Nerd Font=34",
+          theme = "gruvbox-dark",
+          pad_horiz = 0,
+          pad_vert = 0,
+          to_clipboard = true,
+          no_round_corner = true,
+          no_window_controls = true,
+        })
+      end
+    },
     -- Make coding enjoyable
     { 'numToStr/Comment.nvim',         opts = {},                           keys = require('keymaps.comment') },
     {
