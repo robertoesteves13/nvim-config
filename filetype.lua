@@ -99,10 +99,7 @@ vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
 
-require('fileconf').setup()
-
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = "LspAttach_inlayhints",
   callback = function(args)
@@ -112,7 +109,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require("lsp-inlayhints").on_attach(client, bufnr, true)
+    require("lsp-inlayhints").on_attach(client, bufnr)
   end,
 })
 
@@ -127,4 +124,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     lsp_attach(client, bufnr)
   end,
 })
-

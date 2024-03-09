@@ -1,16 +1,23 @@
-# READ THIS BEFORE USING IT
-Because of depending on a bleeding-edge version of neovim, things may be easily
-breakable since I don't freeze the plugins into a working state (might do that later).
-I don't guarantee to update fast if some plugin breaks, instead you should rely
-on other neovim configurations with saner defaults such as
-[LunarVim](https://github.com/LunarVim/LunarVim) or [NvChad](https://github.com/NvChad/NvChad).
+# Config
+This is the config I always use for programming. The code is focused to not
+be overwritten a lot and avoid complete rewrites of the config, so mantainability
+is a big priority.
+
+This config does LSP handling pretty different compared to plugins like `lspconfig`.
+It uses the native filetype plugin to run code for that filetype, including
+starting the LSP. The idea is to have different configurations for each filetype
+when needed, and I couldn't do that using `lspconfig`, so I preferred using
+`vim.lsp` directly. It lacks a lot of extra functionality, but I found much
+simpler to work with.
+
+If you want to learn how it works, look at `after/ftplugin` and `lua/lsp_utils.lua`.
 
 ## Dependencies
-- Git
-- Neovim Nightly (Always check for latest version)
-- C Toolchain
-- CMake
-- Treesitter
+- git
+- any C toolchain
+- cmake
+- make
+- tree-sitter
 
 ## Installation
 > Linux
@@ -18,7 +25,7 @@ on other neovim configurations with saner defaults such as
 git clone git@github.com:robertoesteves13/nvim-config.git ~/.config/nvim
 ```
 
-> Windows Powershell (not guaranteed to work)
+> Windows Powershell
 ```ps1
 git clone git@github.com:robertoesteves13/nvim-config.git "$env:LOCALAPPDATA\nvim\"
 ```

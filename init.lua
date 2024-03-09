@@ -12,7 +12,7 @@ vim.api.nvim_set_var('&t_8f', '<Esc>[48;2;%lu;%lu;%lum')
 
 -- Neovide stuff
 vim.cmd [[colorscheme gruvbox]]
-vim.opt.guifont = "FiraCode Nerd Font:h11"
+vim.opt.guifont = "FiraCode Nerd Font:h12"
 vim.g.neovide_cursor_vfx_mode = "wireframe"
 vim.g.neovide_refresh_rate = "120"
 vim.g.neovide_cursor_trail_length = "0.1"
@@ -34,10 +34,6 @@ vim.o.scrolloff = 8
 vim.o.hlsearch = false
 vim.o.smartcase = true
 
-vim.o.filetype = true
-vim.o.do_filetype_lua = 1
-vim.o.did_load_filetypes = 0
-
 vim.o.listchars = 'tab:  >,trail:-,nbsp:+,leadmultispace:  |'
 vim.wo.colorcolumn = "80"
 vim.wo.number = true
@@ -51,8 +47,6 @@ vim.o.undofile = true
 vim.opt.list = true
 
 -- Configurations
-require('config/dap')()
-
 require('mini.starter').setup()
 require('mini.pairs').setup()
 require('mini.statusline').setup()

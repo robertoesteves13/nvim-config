@@ -16,7 +16,7 @@ return function()
     -- Colorschemes
     { 'folke/tokyonight.nvim',    lazy = true },
     { "ellisonleao/gruvbox.nvim", lazy = true },
-    { "catppuccin/nvim",          lazy = true },
+    { "catppuccin/nvim",          name = 'catppuccin', lazy = true },
     { "jacoborus/tender.vim",     lazy = true },
     { "savq/melange-nvim",        lazy = true },
 
@@ -71,24 +71,21 @@ return function()
       "michaelrommel/nvim-silicon",
       lazy = true,
       cmd = "Silicon",
-      config = function()
-        require("silicon").setup({
-          font = "FiraCode Nerd Font=34",
-          theme = "gruvbox-dark",
-          pad_horiz = 0,
-          pad_vert = 0,
-          to_clipboard = true,
-          no_round_corner = true,
-          no_window_controls = true,
-        })
-      end
+      opts = {
+        font = "FiraCode Nerd Font=34",
+        theme = "gruvbox-dark",
+        pad_horiz = 0,
+        pad_vert = 0,
+        to_clipboard = true,
+        no_round_corner = true,
+        no_window_controls = true,
+      },
     },
     -- Make coding enjoyable
     { 'numToStr/Comment.nvim',         opts = {},                           keys = require('keymaps.comment') },
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
-      event = { "UIEnter" },
       config = require('config/treesitter')
     },
     { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
@@ -102,14 +99,8 @@ return function()
       dependencies = { 'nvim-tree/nvim-web-devicons' },
       keys = require('keymaps.oil'),
     },
-    { 'echasnovski/mini.nvim', version = '*' },
+    { 'echasnovski/mini.nvim',        version = '*' },
     -- LSP Support
-    { 'neovim/nvim-lspconfig' },
-    {
-      'lvimuser/lsp-inlayhints.nvim',
-      event = { "LspAttach" },
-      opts = {},
-    },
     {
       'williamboman/mason.nvim',
       build = ":MasonUpdate",
@@ -135,30 +126,41 @@ return function()
       version = "v2.*",
       build = "make install_jsregexp"
     },
+    { 'lvimuser/lsp-inlayhints.nvim', opts = {},    event = "LspAttach" },
 
     -- Debugging support
     {
       'rcarriga/nvim-dap-ui',
-      event = { "UIEnter" },
+      event = { "LspAttach" },
       dependencies = {
         { 'mfussenegger/nvim-dap' },
-        { 'theHamsta/nvim-dap-virtual-text' },
+        { 'theHamsta/nvim-dap-virtual-text', opts = {} },
       },
       opts = {},
       keys = require('keymaps.dapui'),
     },
 
     -- Language-specific Plugins
-    { 'akinsho/flutter-tools.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, event = { "BufRead *.dart" }, lazy = true },
-    { 'ionide/Ionide-vim',          event = { "BufRead *.fs" },                 lazy = true },
-    { 'lervag/vimtex',              event = "BufRead *.tex",                    lazy = true },
+    {
+      'akinsho/flutter-tools.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      ft = "dart",
+      opts = {},
+    },
+    { 'ionide/Ionide-vim', event = { "BufRead *.fs" }, lazy = true },
+    { 'lervag/vimtex',     event = "BufRead *.tex",    lazy = true },
     {
       'Saecki/crates.nvim',
       event = { "BufRead Cargo.toml" },
       dependencies = 'nvim-lua/plenary.nvim',
       config = require('config/crates_nvim'),
     },
-    { 'sbdchd/neoformat' },
+    {
+      'stevearc/conform.nvim',
+      opts = {},
+      keys = require('keymaps.conform'),
+    },
+    { 'ranjithshegde/ccls.nvim', ft = { 'c', 'cpp' } },
   }
 
   require("lazy").setup(plugins)
