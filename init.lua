@@ -2,8 +2,8 @@
 vim.g.mapleader = ' '
 require('plugins')()
 
-vim.o.background = "dark"
 vim.o.termguicolors = true
+vim.o.background = "dark"
 vim.api.nvim_set_var('gruvbox_contrast_dark', 'hard')
 vim.api.nvim_set_var('gruvbox_invert_selection', '0')
 

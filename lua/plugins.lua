@@ -82,17 +82,18 @@ return function()
       },
     },
     -- Make coding enjoyable
-    { 'numToStr/Comment.nvim',         opts = {},                           keys = require('keymaps.comment') },
+    { 'numToStr/Comment.nvim',                   opts = {},                           keys = require('keymaps.comment') },
     {
       'nvim-treesitter/nvim-treesitter',
       build = ':TSUpdate',
       config = require('config/treesitter')
     },
-    { 'ThePrimeagen/refactoring.nvim', config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
-    { 'folke/trouble.nvim',            lazy = true,                         event = { "LspAttach" } },
-    { 'tpope/vim-fugitive',            lazy = true,                         keys = require('keymaps.fugitive') },
-    { 'ThePrimeagen/harpoon',          lazy = true,                         keys = require('keymaps.harpoon') },
-    { 'stevearc/overseer.nvim',        opts = {},                           lazy = true,                       keys = require('keymaps.overseer') },
+    { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
+    { 'ThePrimeagen/refactoring.nvim',           config = require('config/refactor'), lazy = true,                       keys = require('keymaps.refactoring') },
+    { 'folke/trouble.nvim',                      lazy = true,                         event = { "LspAttach" } },
+    { 'tpope/vim-fugitive',                      lazy = true,                         keys = require('keymaps.fugitive') },
+    { 'ThePrimeagen/harpoon',                    lazy = true,                         keys = require('keymaps.harpoon') },
+    { 'stevearc/overseer.nvim',                  opts = {},                           lazy = true,                       keys = require('keymaps.overseer') },
     {
       'stevearc/oil.nvim',
       opts = {},
@@ -124,7 +125,14 @@ return function()
       "L3MON4D3/LuaSnip",
       event = { "LspAttach" },
       version = "v2.*",
-      build = "make install_jsregexp"
+      build = "make install_jsregexp",
+      dependencies = {
+        'rafamadriz/friendly-snippets',
+        dependencies = { 'L3MON4D3/LuaSnip' },
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+      },
     },
     { 'lvimuser/lsp-inlayhints.nvim', opts = {},    event = "LspAttach" },
 
@@ -160,7 +168,12 @@ return function()
       opts = {},
       keys = require('keymaps.conform'),
     },
-    { 'ranjithshegde/ccls.nvim', ft = { 'c', 'cpp' } },
+    {
+      "Badhi/nvim-treesitter-cpp-tools",
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      opts = {},
+      ft = { 'c', 'cpp' },
+    },
   }
 
   require("lazy").setup(plugins)
