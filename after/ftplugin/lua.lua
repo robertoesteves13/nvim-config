@@ -12,5 +12,6 @@ local lsp_settings = {
 require("lsp_utils").SetupLsp({
   name = "lua-language-server",
   root_files = {".git"},
+  before_init = require("neodev.lsp").before_init,
   settings = lsp_settings
 })

@@ -143,9 +143,15 @@ return function()
       dependencies = {
         { 'mfussenegger/nvim-dap' },
         { 'theHamsta/nvim-dap-virtual-text', opts = {} },
+        { 'nvim-neotest/nvim-nio' },
       },
       opts = {},
       keys = require('keymaps.dapui'),
+    },
+    {
+      'dgagn/diagflow.nvim',
+      event = 'LspAttach',
+      opts = {}
     },
 
     -- Language-specific Plugins
@@ -173,6 +179,21 @@ return function()
       dependencies = { "nvim-treesitter/nvim-treesitter" },
       opts = {},
       ft = { 'c', 'cpp' },
+    },
+    { "folke/neodev.nvim", opts = { lspconfig = false }, ft = { "lua" } },
+    {
+      "kawre/leetcode.nvim",
+      build = ":TSUpdate html",
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "rcarriga/nvim-notify",
+        "nvim-tree/nvim-web-devicons",
+      },
+      lazy = 'leetcode.nvim' ~= vim.fn.argv()[1],
+      opts = { arg = 'leetcode.nvim' },
     },
   }
 

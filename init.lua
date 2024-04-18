@@ -6,16 +6,18 @@ vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.api.nvim_set_var('gruvbox_contrast_dark', 'hard')
 vim.api.nvim_set_var('gruvbox_invert_selection', '0')
+vim.cmd [[colorscheme gruvbox]]
 
 vim.api.nvim_set_var('&t_8f', '<Esc>[38;2;%lu;%lu;%lum')
 vim.api.nvim_set_var('&t_8f', '<Esc>[48;2;%lu;%lu;%lum')
 
 -- Neovide stuff
-vim.cmd [[colorscheme gruvbox]]
-vim.opt.guifont = "FiraCode Nerd Font:h12"
-vim.g.neovide_cursor_vfx_mode = "wireframe"
-vim.g.neovide_refresh_rate = "120"
-vim.g.neovide_cursor_trail_length = "0.1"
+if vim.g.neovide then
+  vim.opt.guifont = "FiraCode Nerd Font:h12"
+  vim.g.neovide_cursor_vfx_mode = "wireframe"
+  vim.g.neovide_refresh_rate = "120"
+  vim.g.neovide_cursor_trail_length = "0.1"
+end
 
 vim.g.asyncrun_open = 6
 

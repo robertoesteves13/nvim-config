@@ -4,11 +4,19 @@ vim.bo.tabstop = 2
 require("lsp_utils").SetupLsp({
   name = "cssls",
   cmd = { "vscode-css-language-server", "--stdio" },
+  settings = {
+    css = { validate = true },
+    scss = { validate = true },
+    less = { validate = true },
+  },
+  capabilities = {
+    textDocument = {
+      completion = {
+        completionItem = {
+          snippetSupport = true
+        }
+      }
+    }
+  },
   root_files = {".git"},
-})
-
-require("lsp_utils").SetupLsp({
-  name = "tailwindcss",
-  cmd = { "tailwindcss-language-server", "--stdio" },
-  root_files = {"tailwind.config.js"},
 })
