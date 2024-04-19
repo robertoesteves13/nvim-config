@@ -15,7 +15,7 @@ end
 
 ---@param opts LspOpts A list of LSP options
 ---@see LspOpts
-function SetupLsp(opts)
+local function SetupLsp(opts)
   if opts["cmd"] == nil then
     opts.cmd = { opts.name }
   end
@@ -43,7 +43,8 @@ function SetupLsp(opts)
 
 end
 
-function create_window(buffer)
+---@param buffer integer
+local function create_window(buffer)
   local width = math.floor(vim.o.columns * 0.66)
   local height = math.floor(vim.o.lines * 0.66)
   local top = math.floor(((vim.o.lines - height) / 2))
@@ -54,7 +55,7 @@ function create_window(buffer)
     "minimal" })
 end
 
-function open()
+local function open()
   local clients = vim.lsp.get_active_clients()
   local names = {}
   local indexTable = {}
@@ -75,22 +76,13 @@ function open()
   end)
 end
 
-function see_logs()
-  local clients = vim.lsp.get_active_clients()
-  local names = {}
-  local indexTable = {}
-
-  for i, client in ipairs(clients) do
-    table.insert(names, client.name)
-    indexTable[client.name] = i
-  end
-
+local function see_logs()
   local filename = vim.lsp.get_log_path()
   vim.cmd("edit " .. filename)
 end
 
-vim.api.nvim_create_user_command("LspUi", open, {})
-vim.api.nvim_create_user_command("LspUiLogs", see_logs, {})
+vim.api.nvim_create_user_command("LspInfo", open, {})
+vim.api.nvim_create_user_command("LspLogs", see_logs, {})
 
 return {
   SetupLsp = SetupLsp
