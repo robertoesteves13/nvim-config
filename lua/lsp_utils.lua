@@ -16,26 +16,26 @@ end
 ---@param opts LspOpts A list of LSP options
 ---@see LspOpts
 local function SetupLsp(opts)
+  local o = {}
+  o.name = opts.name
+  o.before_init = opts.before_init
+  o.root_dir = setRoot(opts.root_files)
+
   if opts["cmd"] == nil then
-    opts.cmd = { opts.name }
+    o.cmd = { opts.name }
+  else
+    o.cmd = opts.cmd
   end
 
-  if opts["settings"] == nil then
-    opts.settings = {}
+  if opts["settings"] ~= nil then
+    o.settings = opts.settings
   end
 
-  if opts["capabilities"] == nil then
-    opts.capabilities = {}
+  if opts["capabilities"] ~= nil then
+    o.capabilities = opts.capabilities
   end
 
-  local client = vim.lsp.start({
-    name = opts.name,
-    cmd = opts.cmd,
-    settings = opts.settings,
-    capabilities = opts.capabilities,
-    before_init = opts.before_init,
-    root_dir = setRoot(opts.root_files),
-  })
+  local client = vim.lsp.start(o)
 
   if client ~= nil then
     vim.lsp.buf_attach_client(0, client)
