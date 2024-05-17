@@ -1,4 +1,4 @@
-return function()
+local function cmpConfig()
   local cmp = require('cmp')
   local luasnip = require("luasnip")
   local has_words_before = function()
@@ -112,3 +112,62 @@ return function()
     end,
   })
 end
+
+return {
+  {
+    'williamboman/mason.nvim',
+    build = ":MasonUpdate",
+    opts = {},
+  },
+  {
+    'hrsh7th/nvim-cmp',
+    event = { "LspAttach" },
+    config = cmpConfig,
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      "L3MON4D3/LuaSnip",
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim',
+    }
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    event = { "LspAttach" },
+    version = "v2.*",
+    build = "make install_jsregexp",
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      dependencies = { 'L3MON4D3/LuaSnip' },
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+  },
+
+  {
+    "lewis6991/hover.nvim",
+    config = function()
+      require("hover").setup {
+        init = function()
+          require("hover.providers.lsp")
+        end,
+        preview_opts = {
+          border = nil
+        },
+        preview_window = false,
+        title = true
+      }
+    end,
+    keys = {
+      { "K",  '<cmd>lua require("hover").hover()<CR>',        desc = "hover.nvim" },
+      { "gK", '<cmd>lua require("hover").hover_select()<CR>', desc = "hover.nvim (select)" }
+    }
+  },
+
+  { 'lvimuser/lsp-inlayhints.nvim', opts = {},   event = "LspAttach" },
+  { 'folke/trouble.nvim',           lazy = true, event = { "LspAttach" } },
+}
