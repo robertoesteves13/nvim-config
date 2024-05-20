@@ -1,3 +1,3 @@
 return {
-    { "folke/neodev.nvim", opts = { lspconfig = false }, ft = { "lua" } },
+	{ "folke/neodev.nvim", opts = { lspconfig = false }, ft = { "lua" } },
 }
