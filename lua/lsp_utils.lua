@@ -49,20 +49,16 @@ local function create_window(buffer)
 	local top = math.floor(((vim.o.lines - height) / 2))
 	local left = math.floor((vim.o.columns - width) / 2)
 
-	vim.api.nvim_open_win(
-		buffer,
-		true,
-		{
-			relative = "win",
-			width = width,
-			height = height,
-			border = "single",
-			win = 1001,
-			row = top,
-			col = left,
-			style = "minimal",
-		}
-	)
+	vim.api.nvim_open_win(buffer, true, {
+		relative = "win",
+		width = width,
+		height = height,
+		border = "single",
+		win = 1001,
+		row = top,
+		col = left,
+		style = "minimal",
+	})
 end
 
 local function open()
