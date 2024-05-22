@@ -1,11 +1,16 @@
 return {
-	"tpope/vim-fugitive",
-	lazy = true,
-	keys = {
-		{ "<leader>gi", [[<cmd>Git<CR>]] },
-		{ "<leader>gc", [[<cmd>Git commit<CR>]] },
-		{ "<leader>gd", [[<cmd>Git diff HEAD<CR>]] },
-		{ "<leader>gp", [[<cmd>Git push<CR>]] },
-		{ "<leader>gs", [[<cmd>Git pull<CR>]] },
+
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+			"ibhagwan/fzf-lua",
+		},
+		keys = {
+			{ "<leader>g", "<cmd>Neogit<CR>" },
+		},
+		opts = {},
 	},
 }
