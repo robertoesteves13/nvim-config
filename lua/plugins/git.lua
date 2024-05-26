@@ -9,7 +9,7 @@ return {
 			"ibhagwan/fzf-lua",
 		},
 		keys = {
-			{ "<leader>g", "<cmd>Neogit<CR>" },
+			{ "<leader>gs", "<cmd>Neogit<CR>" },
 		},
 		opts = {},
 	},
