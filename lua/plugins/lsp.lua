@@ -26,4 +26,9 @@ return {
 	},
 
 	{ "folke/trouble.nvim", lazy = true, event = { "LspAttach" } },
+	{
+		"dgagn/diagflow.nvim",
+		event = "LspAttach",
+		opts = {},
+	},
 }

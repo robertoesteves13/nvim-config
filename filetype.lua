@@ -18,8 +18,6 @@ local function lsp_attach(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", params)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", params)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", params)
-	-- DAP
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>da", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", params)
 	-- Hack to fix omnisharp's broken semantic highlighting
 	if client.name == "omnisharp" then
 		client.server_capabilities.semanticTokensProvider = {

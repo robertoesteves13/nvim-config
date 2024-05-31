@@ -4,6 +4,6 @@ vim.opt.tabstop = 2
 
 require("lsp_utils").SetupLsp({
 	name = "swift_mesonls",
-	cmd = { "Swift-MesonLSP" },
+	cmd = { "mesonlsp" },
 	root_files = { ".git", "meson.build" },
 })

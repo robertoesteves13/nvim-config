@@ -1,7 +1,6 @@
 return {
 	{
 		"rcarriga/nvim-dap-ui",
-		event = { "LspAttach" },
 		dependencies = {
 			{ "mfussenegger/nvim-dap" },
 			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
@@ -9,14 +8,13 @@ return {
 		},
 		opts = {},
 		keys = {
-			{ "<C-K>", '<cmd>lua require("dapui").eval()<CR>' },
+			{ "<leader>dsi", "<cmd>DapStepInto<CR>" },
+			{ "<leader>dso", "<cmd>DapStepOver<CR>" },
+			{ "<leader>dt", "<cmd>DapToggleBreakpoint<CR>" },
+			{ "<leader>dsu", "<cmd>DapStepOut<CR>" },
 			{ "<leader>dc", "<cmd>DapContinue<CR>" },
-			{ mode = "v", "<leader>e", '<cmd>lua require("dapui").eval()<CR>' },
+			{ "<leader>de", '<cmd>lua require("dapui").eval()<CR>' },
+			{ mode = "v", "<leader>de", '<cmd>lua require("dapui").eval()<CR>' },
 		},
-	},
-	{
-		"dgagn/diagflow.nvim",
-		event = "LspAttach",
-		opts = {},
 	},
 }
