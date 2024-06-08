@@ -10,7 +10,6 @@ return {
 			h = { "clang-format" },
 			hpp = { "clang-format" },
 			go = { { "goimports", "gofmt" } },
-			java = { "google-java-format" },
 		},
 		format_on_save = {
 			lsp_fallback = true,
