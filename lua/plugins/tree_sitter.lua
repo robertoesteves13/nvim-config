@@ -21,6 +21,13 @@ return {
 				},
 				filetype = "fs",
 			}
+
+			parser_config.jsp = {
+				install_info = {
+					url = "https://github.com/merico-dev/tree-sitter-jsp.git", -- local path or git repo
+					files = { "src/parser.c", "src/scanner.cc" },
+				},
+			}
 		end,
 	},
 	{ "nvim-treesitter/nvim-treesitter-context", opts = {} },
