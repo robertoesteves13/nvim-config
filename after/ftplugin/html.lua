@@ -30,3 +30,9 @@ require("lsp_utils").SetupLsp({
 	},
 	root_files = { "package.json", ".git" },
 })
+
+require("lsp_utils").SetupLsp({
+	name = "emmet",
+	cmd = { "emmet-language-server", "--stdio" },
+	root_files = { "package.json", ".git" },
+})
