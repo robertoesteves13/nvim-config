@@ -89,4 +89,5 @@ return {
 		"folke/twilight.nvim",
 		opts = {},
 	},
+	{ "laytan/cloak.nvim", opts = {} },
 }
