@@ -26,7 +26,7 @@ vim.api.nvim_set_var("&t_8f", "<Esc>[48;2;%lu;%lu;%lum")
 
 -- Neovide stuff
 if vim.g.neovide then
-	vim.opt.guifont = "FiraCode Nerd Font:h12"
+	vim.opt.guifont = "Miracode Nerd Font:h12"
 	vim.g.neovide_cursor_vfx_mode = "wireframe"
 	vim.g.neovide_refresh_rate = "120"
 	vim.g.neovide_cursor_trail_length = "0.1"
