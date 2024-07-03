@@ -90,4 +90,12 @@ return {
 		opts = {},
 	},
 	{ "laytan/cloak.nvim", opts = {} },
+  { 
+    "David-Kunz/gen.nvim",
+    opts = {
+      model = "mistral:latest",
+      host = "localhost",
+      port = "11444"
+    }
+  },
 }
