@@ -90,12 +90,12 @@ return {
 		opts = {},
 	},
 	{ "laytan/cloak.nvim", opts = {} },
-  { 
-    "David-Kunz/gen.nvim",
-    opts = {
-      model = "mistral:latest",
-      host = "localhost",
-      port = "11444"
-    }
-  },
+	{
+		"David-Kunz/gen.nvim",
+		opts = {
+			model = "phi3",
+			host = "localhost",
+			port = "11444",
+		},
+	},
 }

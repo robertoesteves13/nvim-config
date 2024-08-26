@@ -66,7 +66,6 @@ vim.opt.list = true
 
 vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
 
-
 -- Configurations
 require("mini.starter").setup()
 require("mini.pairs").setup()

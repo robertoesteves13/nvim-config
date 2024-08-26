@@ -37,6 +37,7 @@ return {
 			{ "<leader>vc", "<cmd>Telescope coloscheme<CR>", desc = "List Colorschemes" },
 
 			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+			{ "<leader>fs", "<cmd>Telescope treesitter<CR>", desc = "Find Statements" },
 			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
 			{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "List Buffers" },
 
@@ -76,5 +77,12 @@ return {
 			{ "<leader>hl", [[<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], desc = "Harpool list files" },
 			{ "`", [[<cmd>lua require("harpoon.ui").nav_next()<CR>]], desc = "Harpoon switch" },
 		},
+	},
+
+	{
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup()
+		end,
 	},
 }
