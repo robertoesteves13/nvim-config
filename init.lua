@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -26,10 +26,10 @@ vim.api.nvim_set_var("&t_8f", "<Esc>[48;2;%lu;%lu;%lum")
 
 -- Neovide stuff
 if vim.g.neovide then
-	vim.opt.guifont = "Miracode Nerd Font:h12"
-	vim.g.neovide_cursor_vfx_mode = "wireframe"
-	vim.g.neovide_refresh_rate = "120"
-	vim.g.neovide_cursor_trail_length = "0.1"
+  vim.opt.guifont = "Miracode Nerd Font:h12"
+  vim.g.neovide_cursor_vfx_mode = "wireframe"
+  vim.g.neovide_refresh_rate = "120"
+  vim.g.neovide_cursor_trail_length = "0.1"
 end
 
 vim.g.asyncrun_open = 6
@@ -52,7 +52,14 @@ vim.o.smartcase = true
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nc"
 
-vim.o.listchars = "tab:  >,trail:-,nbsp:+,leadmultispace:  |"
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "··>",
+  trail = "·",
+  nbsp = "+",
+  multispace = "·",
+}
+
 vim.wo.colorcolumn = "80"
 vim.wo.number = true
 vim.wo.relativenumber = true
