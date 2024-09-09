@@ -98,4 +98,27 @@ return {
 			port = "11444",
 		},
 	},
+	{
+		"renerocksai/telekasten.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		cmd = "Telekasten",
+		keys = {
+			{ "<leader>z", "<cmd>Telekasten<CR>", desc = "Telekasten options" },
+		},
+		opts = {
+			home = vim.fn.expand("~/notes"),
+		},
+	},
+	{
+		"toppair/peek.nvim",
+		event = { "VeryLazy" },
+		build = "deno task --quiet build:fast",
+		config = function()
+			require("peek").setup({
+				filetype = { "markdown", "telekasten" },
+			})
+			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+		end,
+	},
 }

@@ -50,7 +50,6 @@ vim.o.hlsearch = false
 vim.o.smartcase = true
 
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = "nc"
 
 vim.opt.list = true
 vim.opt.listchars = {

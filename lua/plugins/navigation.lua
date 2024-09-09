@@ -85,4 +85,24 @@ return {
 			require("pretty-fold").setup()
 		end,
 	},
+	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		opts = {
+			preview = {
+				winblend = 0,
+			},
+		},
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		opts = {},
+	},
+	{
+		"nvim-telescope/telescope-symbols.nvim",
+		keys = {
+			{ "<leader>fe", [[<cmd>Telescope symbols<CR>]], desc = "Pick symbol" },
+		},
+	},
 }
