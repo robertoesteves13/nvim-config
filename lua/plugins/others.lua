@@ -121,4 +121,5 @@ return {
 			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		end,
 	},
+  {'danielo515/nvim-treesitter-reason', ft = "reason"},
 }

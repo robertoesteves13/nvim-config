@@ -5,8 +5,11 @@ vim.filetype.add({
     slint = "slint",
     xaml = "xml",
     axaml = "xml",
+    re = "reason",
   },
 })
+
+vim.treesitter.language.add("reason", { filetype = "reason" })
 
 -- Set ident guides for the correct filetype
 local function set_ident_guides()
