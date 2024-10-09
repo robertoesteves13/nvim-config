@@ -122,4 +122,9 @@ return {
 		end,
 	},
   {'danielo515/nvim-treesitter-reason', ft = "reason"},
+  {
+    'eriks47/generate.nvim',
+    ft = 'cpp',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+  },
 }
