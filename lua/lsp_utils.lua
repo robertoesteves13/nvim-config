@@ -21,20 +21,13 @@ local function SetupLsp(opts)
 	o.before_init = opts.before_init
 	o.root_dir = setRoot(opts.root_files)
 
-	if opts["cmd"] == nil then
-		o.cmd = { opts.name }
-	else
-		o.cmd = opts.cmd
-	end
-
-	if opts["settings"] ~= nil then
-		o.settings = opts.settings
-	end
+	o.cmd = opts.cmd or { opts.name }
+	o.settings = opts.settings or opts.settings
 
 	local capabilities = vim.tbl_deep_extend(
 		"force",
 		vim.lsp.protocol.make_client_capabilities(),
-		require("cmp_nvim_lsp").default_capabilities()
+		require("blink.cmp").get_lsp_capabilities()
 	)
 	if opts["capabilities"] ~= nil then
 		capabilities = vim.tbl_deep_extend("force", capabilities, opts.capabilities)
@@ -55,20 +48,24 @@ local function create_window(buffer)
 	local top = math.floor(((vim.o.lines - height) / 2))
 	local left = math.floor((vim.o.columns - width) / 2)
 
-	vim.api.nvim_open_win(buffer, true, {
+	local win = vim.api.nvim_open_win(buffer, true, {
 		relative = "win",
 		width = width,
 		height = height,
 		border = "single",
-		win = 1001,
 		row = top,
 		col = left,
 		style = "minimal",
 	})
+
+	vim.bo[buffer].filetype = "lua"
+	vim.bo[buffer].modifiable = false
+
+	vim.api.nvim_buf_set_keymap(buffer, "n", "q", "<cmd>bw<CR>", {})
 end
 
 local function open()
-	local clients = vim.lsp.get_active_clients()
+	local clients = vim.lsp.get_clients()
 	local names = {}
 	local indexTable = {}
 
@@ -78,8 +75,11 @@ local function open()
 	end
 
 	vim.ui.select(names, { prompt = "Select an LSP" }, function(name)
-		local i = indexTable[name]
+		if name == nil then
+			return
+		end
 
+		local i = indexTable[name]
 		local buffer = vim.api.nvim_create_buf(false, true)
 		local lines = vim.split(vim.inspect(clients[i]), "\n", {})
 		vim.api.nvim_buf_set_lines(buffer, 0, 0, false, lines)

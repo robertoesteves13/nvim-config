@@ -93,7 +93,7 @@ return {
 	{
 		"David-Kunz/gen.nvim",
 		opts = {
-			model = "phi3",
+			model = "mistral",
 			host = "localhost",
 			port = "11444",
 		},
