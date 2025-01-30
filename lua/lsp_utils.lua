@@ -8,7 +8,7 @@
 local LspOpts = {}
 
 ---@param list string[] A list of files/directories. Supports wildcards
----@return unknown
+---@return string?
 local function setRoot(list)
 	return vim.fs.dirname(vim.fs.find(list, { upward = true })[1])
 end
@@ -20,6 +20,11 @@ local function SetupLsp(opts)
 	o.name = opts.name
 	o.before_init = opts.before_init
 	o.root_dir = setRoot(opts.root_files)
+
+  if o.root_dir == nil then
+    vim.notify("Root directory not found, LSP isn't initialized.", vim.log.levels.WARN, nil)
+    return
+  end
 
 	o.cmd = opts.cmd or { opts.name }
 	o.settings = opts.settings or opts.settings
