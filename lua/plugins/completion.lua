@@ -4,7 +4,7 @@ return {
     dependencies = {
       { "rafamadriz/friendly-snippets" },
     },
-
+    event = "VeryLazy",
     version = "*",
 
     ---@module 'blink.cmp'
