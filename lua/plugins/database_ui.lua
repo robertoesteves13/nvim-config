@@ -1,5 +1,5 @@
 return {
-	{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+	{ "kristijanhusak/vim-dadbod-completion", lazy = true },
 	{
 		"kristijanhusak/vim-dadbod-ui",
 		dependencies = {

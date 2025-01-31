@@ -3,5 +3,7 @@ vim.bo.tabstop = 4
 
 require("lsp_utils").SetupLsp({
 	name = "clangd",
-	root_files = { ".git" },
+	root_files = { ".clangd" },
 })
+
+require("clangd_extensions").setup()

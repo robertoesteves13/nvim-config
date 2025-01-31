@@ -15,8 +15,7 @@ return {
 	{
 		"akinsho/flutter-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		ft = "dart",
-		opts = {},
+		lazy = true,
 	},
 	{ "ionide/Ionide-vim", event = { "BufRead *.fs" }, lazy = true },
 	{ "lervag/vimtex", event = "BufRead *.tex", lazy = true },
@@ -51,12 +50,6 @@ return {
 		end,
 	},
 	{
-		"Badhi/nvim-treesitter-cpp-tools",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = {},
-		ft = { "c", "cpp" },
-	},
-	{
 		"kawre/leetcode.nvim",
 		build = ":TSUpdate html",
 		dependencies = {
@@ -70,20 +63,7 @@ return {
 		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
 		opts = { arg = "leetcode.nvim" },
 	},
-	{
-		"nvim-orgmode/orgmode",
-		event = "VeryLazy",
-		ft = { "org" },
-		opts = {
-			org_agenda_files = "~/orgfiles/**/*",
-			org_default_notes_file = "~/orgfiles/refile.org",
-		},
-	},
-	{
-		"akinsho/org-bullets.nvim",
-		ft = { "org" },
-	},
-	{ "p00f/clangd_extensions.nvim", ft = { "cpp" } },
+	{ "p00f/clangd_extensions.nvim", lazy = true },
 	{ "mfussenegger/nvim-jdtls" },
 	{
 		"folke/twilight.nvim",
@@ -121,12 +101,7 @@ return {
 			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		end,
 	},
-	{ "danielo515/nvim-treesitter-reason", ft = "reason" },
-	{
-		"eriks47/generate.nvim",
-		ft = "cpp",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-	},
+	{ "danielo515/nvim-treesitter-reason", lazy = true },
 	{
 		"m4xshen/hardtime.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },

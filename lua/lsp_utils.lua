@@ -21,10 +21,10 @@ local function SetupLsp(opts)
 	o.before_init = opts.before_init
 	o.root_dir = setRoot(opts.root_files)
 
-  if o.root_dir == nil then
-    vim.notify("Root directory not found, LSP isn't initialized.", vim.log.levels.WARN, nil)
-    return
-  end
+	if o.root_dir == nil then
+		vim.notify("Root directory not found, LSP isn't initialized.", vim.log.levels.INFO, nil)
+		return
+	end
 
 	o.cmd = opts.cmd or { opts.name }
 	o.settings = opts.settings or opts.settings

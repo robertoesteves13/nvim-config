@@ -4,5 +4,5 @@ vim.bo.tabstop = 2
 
 require("lsp_utils").SetupLsp({
 	name = "ccls",
-	root_files = { ".git" },
+	root_files = { ".ccls" },
 })
