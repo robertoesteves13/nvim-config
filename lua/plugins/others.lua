@@ -73,7 +73,7 @@ return {
 	{
 		"David-Kunz/gen.nvim",
 		opts = {
-			model = "mistral",
+			model = "deepseek-coder-v2",
 			host = "localhost",
 			port = "11444",
 		},
@@ -90,21 +90,60 @@ return {
 		},
 	},
 	{
-		"toppair/peek.nvim",
-		event = { "VeryLazy" },
-		build = "deno task --quiet build:fast",
-		config = function()
-			require("peek").setup({
-				filetype = { "markdown", "telekasten" },
-			})
-			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-		end,
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
 	},
 	{ "danielo515/nvim-treesitter-reason", lazy = true },
 	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		opts = {},
+		"hat0uma/csvview.nvim",
+		---@module "csvview"
+		---@type CsvView.Options
+		opts = {
+			parser = { comments = { "#", "//" } },
+			keymaps = {
+				textobject_field_inner = { "if", mode = { "o", "x" } },
+				textobject_field_outer = { "af", mode = { "o", "x" } },
+				jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
+				jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
+				jump_next_row = { "<Enter>", mode = { "n", "v" } },
+				jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
+			},
+		},
+		cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+	},
+	{
+		"elixir-tools/elixir-tools.nvim",
+		version = "*",
+		ft = "elixir",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local elixir = require("elixir")
+			local elixirls = require("elixir.elixirls")
+
+			elixir.setup({
+				nextls = { enable = true },
+				elixirls = {
+					enable = true,
+					settings = elixirls.settings({
+						dialyzerEnabled = false,
+						enableTestLenses = false,
+					}),
+					on_attach = function(client, bufnr)
+						vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
+						vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
+						vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
+					end,
+				},
+				projectionist = {
+					enable = true,
+				},
+			})
+		end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 	},
 }

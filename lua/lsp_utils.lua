@@ -1,3 +1,5 @@
+-- TODO: implement https://github.com/neovim/neovim/pull/31031 when neovim reaches 0.11
+
 ---@class LspOpts
 ---@field name string The name of LSP
 ---@field cmd string[]? Command-line arguments to start LSP (default to `name`)
@@ -10,7 +12,8 @@ local LspOpts = {}
 ---@param list string[] A list of files/directories. Supports wildcards
 ---@return string?
 local function setRoot(list)
-	return vim.fs.dirname(vim.fs.find(list, { upward = true })[1])
+	local dirs = vim.fs.find(list, { upward = false })
+	return vim.fs.dirname(dirs[1])
 end
 
 ---@param opts LspOpts A list of LSP options

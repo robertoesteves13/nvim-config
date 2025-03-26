@@ -4,4 +4,5 @@ vim.bo.tabstop = 2
 require("lsp_utils").SetupLsp({
 	name = "cssls",
 	root_files = { ".git" },
+  cmd = { 'vscode-css-language-server', '--stdio' }
 })
