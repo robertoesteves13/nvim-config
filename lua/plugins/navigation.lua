@@ -28,7 +28,6 @@ return {
 
 			telescope.load_extension("file_browser")
 			telescope.load_extension("harpoon")
-			telescope.load_extension("fzf")
 			telescope.load_extension("dap")
 		end,
 		keys = {
@@ -54,12 +53,6 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		lazy = true,
-	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		lazy = true,
 	},

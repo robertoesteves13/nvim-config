@@ -16,7 +16,4 @@ return {
 			timeout_ms = 500,
 		},
 	},
-	keys = {
-		{ "<leader>p", '<cmd>lua require("conform").format()<CR>' },
-	},
 }
