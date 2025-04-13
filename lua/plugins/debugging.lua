@@ -3,25 +3,30 @@ local function config()
 
 	local dap = require("dap")
 	dap.adapters.go = {
-		type = "executable",
-		command = "dlv",
-		args = { "dap", "-l", "127.0.0.1:38697" },
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = "dlv",
+			args = { "dap", "-l", "127.0.0.1:${port}" },
+		},
 	}
 
-  dap.set_log_level('DEBUG')
+	dap.set_log_level("TRACE")
 
 	local ui = require("dapui")
 	dap.listeners.before.attach.dapui_config = ui.open
 	dap.listeners.before.launch.dapui_config = ui.open
 	dap.listeners.before.event_terminated.dapui_config = ui.close
 	dap.listeners.before.event_exited.dapui_config = ui.close
+
+	ui.setup()
 end
 
 return {
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
-			{ "mfussenegger/nvim-dap" },
+			{ "mfussenegger/nvim-dap", opts = {} },
 			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 			{ "nvim-neotest/nvim-nio" },
 		},
@@ -32,6 +37,7 @@ return {
 			{ "<leader>da", "<cmd>DapToggleBreakpoint<CR>" },
 			{ "<leader>dsu", "<cmd>DapStepOut<CR>" },
 			{ "<leader>dc", "<cmd>DapContinue<CR>" },
+			{ "<leader>dd", '<cmd>lua require("dapui").open()<CR>' },
 			{ "<leader>de", '<cmd>lua require("dapui").eval()<CR>' },
 			{ mode = "v", "<leader>de", '<cmd>lua require("dapui").eval()<CR>' },
 		},

@@ -71,14 +71,6 @@ return {
 	},
 	{ "laytan/cloak.nvim", opts = {} },
 	{
-		"David-Kunz/gen.nvim",
-		opts = {
-			model = "deepseek-coder-v2",
-			host = "localhost",
-			port = "11444",
-		},
-	},
-	{
 		"renerocksai/telekasten.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		cmd = "Telekasten",
