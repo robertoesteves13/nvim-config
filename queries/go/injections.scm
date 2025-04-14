@@ -2,22 +2,23 @@
   (const_spec
     name: (identifier) @q (#any-contains? @q "Query" "query" "sql" "SQL")
     value: (expression_list
-      (raw_string_literal) @injection.content
-      (#set! injection.language "sql")
-      (#offset! @injection.content 0 1 0 -1)
+      (raw_string_literal
+        (raw_string_literal_content) @injection.content
+        (#set! injection.language "sql")
+      )
     )
   )
 )
 
-
 (call_expression
   function: (selector_expression
     operand: (identifier) @_var (#match? @_var "conn")
-    field: (field_identifier) @_func (#eq? @_func "Query" "Exec" "QueryRow")
+    field: (field_identifier) @_func (#any-of? @_func "Query" "Exec" "QueryRow")
   )
   arguments: (argument_list
-    (raw_string_literal) @injection.content
-    (#set! injection.language "sql")
-    (#offset! @injection.content 0 1 0 -1)
+    (raw_string_literal
+      (raw_string_literal_content) @injection.content
+      (#set! injection.language "sql")
+    )
   )
 )

@@ -63,7 +63,6 @@ return {
 		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
 		opts = { arg = "leetcode.nvim" },
 	},
-	{ "p00f/clangd_extensions.nvim", lazy = true },
 	{ "mfussenegger/nvim-jdtls" },
 	{
 		"folke/twilight.nvim",
@@ -81,14 +80,6 @@ return {
 			home = vim.fn.expand("~/notes"),
 		},
 	},
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = {},
-	},
-	{ "danielo515/nvim-treesitter-reason", lazy = true },
 	{
 		"hat0uma/csvview.nvim",
 		---@module "csvview"
@@ -110,7 +101,6 @@ return {
 		"elixir-tools/elixir-tools.nvim",
 		version = "*",
 		ft = "elixir",
-		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local elixir = require("elixir")
 			local elixirls = require("elixir.elixirls")

@@ -9,13 +9,9 @@ vim.filetype.add({
 	},
 })
 
-vim.lsp.config("*", {
-	root_markers = { ".git" },
-})
-
 vim.lsp.enable({
 	"lua_ls",
-	"ccls",
+	-- "ccls",
 	"clangd",
 	"cssls",
 	"denols",
@@ -36,6 +32,11 @@ vim.lsp.enable({
 	"unocss_ls",
 	"vscode_html",
 	"zls",
+})
+
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = true,
 })
 
 -- Set ident guides for the correct filetype

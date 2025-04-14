@@ -1,7 +1,7 @@
 local function config()
 	require("dap.ext.vscode").getconfigs(nil)
-
 	local dap = require("dap")
+
 	dap.adapters.go = {
 		type = "server",
 		port = "${port}",
@@ -11,7 +11,23 @@ local function config()
 		},
 	}
 
-	dap.set_log_level("TRACE")
+	dap.adapters.lldb = {
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = "lldb-dap",
+			args = { "--port", "${port}" },
+		},
+	}
+
+	dap.adapters.lldb = {
+		type = "server",
+		port = "${port}",
+		executable = {
+			command = "lldb-dap",
+			args = { "--port", "${port}" },
+		},
+	}
 
 	local ui = require("dapui")
 	dap.listeners.before.attach.dapui_config = ui.open
@@ -26,18 +42,18 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
-			{ "mfussenegger/nvim-dap", opts = {} },
+			{ "mfussenegger/nvim-dap" },
 			{ "theHamsta/nvim-dap-virtual-text", opts = {} },
 			{ "nvim-neotest/nvim-nio" },
 		},
 		opts = {},
 		keys = {
-			{ "<leader>dsi", "<cmd>DapStepInto<CR>" },
-			{ "<leader>dso", "<cmd>DapStepOver<CR>" },
-			{ "<leader>da", "<cmd>DapToggleBreakpoint<CR>" },
-			{ "<leader>dsu", "<cmd>DapStepOut<CR>" },
-			{ "<leader>dc", "<cmd>DapContinue<CR>" },
-			{ "<leader>dd", '<cmd>lua require("dapui").open()<CR>' },
+			{ "<F11>", "<cmd>DapStepInto<CR>" },
+			{ "<F12>", "<cmd>DapStepOut<CR>" },
+			{ "<F10>", "<cmd>DapStepOver<CR>" },
+			{ "<F9>", "<cmd>DapToggleBreakpoint<CR>" },
+			{ "<F5>", "<cmd>DapContinue<CR>" },
+			{ "<leader>dt", '<cmd>lua require("dapui").toggle()<CR>' },
 			{ "<leader>de", '<cmd>lua require("dapui").eval()<CR>' },
 			{ mode = "v", "<leader>de", '<cmd>lua require("dapui").eval()<CR>' },
 		},

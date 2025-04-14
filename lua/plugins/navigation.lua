@@ -71,12 +71,9 @@ return {
 			{ "`", [[<cmd>lua require("harpoon.ui").nav_next()<CR>]], desc = "Harpoon switch" },
 		},
 	},
-
 	{
 		"anuvyklack/pretty-fold.nvim",
-		config = function()
-			require("pretty-fold").setup()
-		end,
+		opts = {},
 	},
 	{
 		"kevinhwang91/nvim-bqf",

@@ -86,3 +86,5 @@ vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
 require("mini.starter").setup()
 require("mini.pairs").setup()
 require("mini.statusline").setup()
+
+vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "red", linehl = "", numhl = "" })
