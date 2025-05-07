@@ -15,6 +15,9 @@ return {
 					lsp_dynamic_workspace_symbols = {
 						theme = "dropdown",
 					},
+					man_pages = {
+						sections = { "ALL" },
+					},
 				},
 				extensions = {
 					fzf = {
@@ -38,7 +41,8 @@ return {
 			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 			{ "<leader>fs", "<cmd>Telescope treesitter<CR>", desc = "Find Statements" },
 			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-			{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "List Buffers" },
+			{ "<leader>m", "<cmd>Telescope man_pages<CR>", desc = "Live Grep" },
+			{ "<leader>b", "<cmd>Telescope buffers<CR>", desc = "List Buffers" },
 
 			{ "<leader>ld", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP Definitions" },
 			{ "<leader>lt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "LSP Type Definitions" },
