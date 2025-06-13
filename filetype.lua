@@ -68,6 +68,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			return
 		end
 
-		vim.lsp.inlay_hint.enable(true, nil)
+		vim.lsp.inlay_hint.enable(false, nil)
 	end,
 })

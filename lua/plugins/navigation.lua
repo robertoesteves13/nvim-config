@@ -4,6 +4,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local telescope = require("telescope")
+			local sorters = require("telescope.sorters")
 			telescope.setup({
 				defaults = {
 					mappings = {},
@@ -38,6 +39,7 @@ return {
 			{ "<leader>vo", "<cmd>Telescope vim_options<CR>", desc = "Vim Options" },
 			{ "<leader>vc", "<cmd>Telescope coloscheme<CR>", desc = "List Colorschemes" },
 
+			{ "<leader>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", desc = "Find Files" },
 			{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 			{ "<leader>fs", "<cmd>Telescope treesitter<CR>", desc = "Find Statements" },
 			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
@@ -74,10 +76,6 @@ return {
 			{ "<leader>hl", [[<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>]], desc = "Harpool list files" },
 			{ "`", [[<cmd>lua require("harpoon.ui").nav_next()<CR>]], desc = "Harpoon switch" },
 		},
-	},
-	{
-		"anuvyklack/pretty-fold.nvim",
-		opts = {},
 	},
 	{
 		"kevinhwang91/nvim-bqf",
