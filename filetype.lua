@@ -32,6 +32,7 @@ vim.lsp.enable({
 	"unocss_ls",
 	"vscode_html",
 	"zls",
+	"vuels",
 })
 
 vim.diagnostic.config({
