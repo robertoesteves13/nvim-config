@@ -1,0 +1,23 @@
+{
+  "vee-validate-field": {
+    "prefix": "vee-field",
+    "body": [
+      "const [${1:field}, ${1}Props] = defineField('${1}');"
+    ],
+    "description": "Define vee-validate field"
+ },
+  "v-text-field": {
+    "prefix": "vee-text-field",
+    "body": [
+      "<v-text-field v-model=\"${1:field}\" v-bind=\"${1}Props\" label=\"${2:Label}\" :error.messages=\"errors.${1}\"></v-text-field>"
+    ],
+    "description": "Vuetify text field"
+  },
+  "v-select": {
+    "prefix": "vee-select",
+    "body": [
+      "<v-select :items=\"${1:field}\" v-bind=\"${2:props}\" label=\"${3:Label}\"></v-text-field>"
+    ],
+    "description": "Vuetify select"
+  }
+}

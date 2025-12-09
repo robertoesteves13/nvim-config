@@ -1,23 +1,23 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		lazyrepo,
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    lazyrepo,
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -37,9 +37,9 @@ vim.api.nvim_set_var("&t_8f", "<Esc>[48;2;%lu;%lu;%lum")
 
 -- Neovide stuff
 if vim.g.neovide then
-	vim.opt.guifont = "FiraCode Nerd Font:h12"
-	vim.g.neovide_refresh_rate = "120"
-	vim.g.neovide_cursor_trail_length = "0.1"
+  vim.opt.guifont = "FiraCode Nerd Font:h12"
+  vim.g.neovide_refresh_rate = "120"
+  vim.g.neovide_cursor_trail_length = "0.1"
 end
 
 vim.g.asyncrun_open = 6
@@ -63,10 +63,10 @@ vim.opt.conceallevel = 2
 
 vim.opt.list = true
 vim.opt.listchars = {
-	tab = "··>",
-	trail = "·",
-	nbsp = "+",
-	multispace = "·",
+  tab = "··>",
+  trail = "·",
+  nbsp = "+",
+  multispace = "·",
 }
 
 vim.wo.colorcolumn = "80"
@@ -86,5 +86,7 @@ vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
 require("mini.starter").setup()
 require("mini.pairs").setup()
 require("mini.statusline").setup()
+
+require('lsp-info').setup();
 
 vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "red", linehl = "", numhl = "" })
