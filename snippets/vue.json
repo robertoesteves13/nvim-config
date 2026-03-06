@@ -9,7 +9,7 @@
   "v-text-field": {
     "prefix": "vee-text-field",
     "body": [
-      "<v-text-field v-model=\"${1:field}\" v-bind=\"${1}Props\" label=\"${2:Label}\" :error.messages=\"errors.${1}\"></v-text-field>"
+      "<v-text-field v-model=\"${1:field}\" v-bind=\"${1}Props\" label=\"${2:Label}\" :error-messages=\"errors.${1}\"></v-text-field>"
     ],
     "description": "Vuetify text field"
   },

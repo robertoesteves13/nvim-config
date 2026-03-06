@@ -6,13 +6,16 @@ vim.filetype.add({
     xaml = "xml",
     axaml = "xml",
     re = "reason",
+    c3 = 'c3',
+    c3i = 'c3',
+    c3t = 'c3',
   },
 })
 
 vim.lsp.enable({
   "lua_ls",
   -- "ccls",
-  -- "clangd",
+  "clangd",
   "cssls",
   "denols",
   "emmet",
@@ -31,9 +34,11 @@ vim.lsp.enable({
   "typescript_ls",
   "unocss_ls",
   "vscode_html",
+  "ols",
   "zls",
   "vuels",
-  -- "biome",
+  "c3-lsp",
+  "biome",
 })
 
 -- Set ident guides for the correct filetype
@@ -66,5 +71,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     vim.lsp.inlay_hint.enable(false, nil)
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(event)
+    if vim.treesitter.language.add(event.match) then
+      vim.treesitter.start()
+    end
   end,
 })

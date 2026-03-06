@@ -2,6 +2,9 @@ return {
   cmd = { "typescript-language-server", "--stdio" },
   root_markers = { "package.json" },
   init_options = {
+    typescript = {
+      tsdk = "./node_modules/typescript/lib"
+    },
     plugins = {
       {
         name = '@vue/typescript-plugin',

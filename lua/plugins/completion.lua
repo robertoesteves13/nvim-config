@@ -30,6 +30,10 @@ return {
         default = { "lsp", "path", "snippets", "buffer" },
         providers = {},
       },
+      completion = {
+        menu = { auto_show = false },
+        documentation = { auto_show = true },
+      }
     },
     opts_extend = { "sources.default" },
   },

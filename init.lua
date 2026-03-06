@@ -44,8 +44,6 @@ end
 
 vim.g.asyncrun_open = 6
 
-vim.api.nvim_set_var("completeopt", "menu,menuone,noselect")
-
 vim.o.errorbells = false
 vim.o.hidden = true
 vim.o.smartindent = true
@@ -85,8 +83,16 @@ vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
 -- Configurations
 require("mini.starter").setup()
 require("mini.pairs").setup()
+require("mini.pick").setup()
 require("mini.statusline").setup()
-
 require('lsp-info').setup();
+
+-- yikes
+if vim.g.vscode then
+  vim.keymap.set('n', '<leader>e', [[<cmd>lua require('vscode').action('workbench.view.explorer')<CR>]])
+  vim.keymap.set('n', '<leader>ff', [[<cmd>lua require('vscode').action('workbench.action.quickOpen')<CR>]])
+  vim.keymap.set('n', 'L', [[<cmd>lua require('vscode').action('workbench.action.nextEditor')<CR>]])
+  vim.keymap.set('n', 'H', [[<cmd>lua require('vscode').action('workbench.action.previousEditor')<CR>]])
+end
 
 vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "red", linehl = "", numhl = "" })

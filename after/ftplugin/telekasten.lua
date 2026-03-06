@@ -3,6 +3,8 @@ local params = {
   silent = true,
 }
 
+vim.treesitter.start()
+
 vim.api.nvim_buf_set_keymap(0, "n", "K", "<cmd>Telekasten follow_link<CR>", params)
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>fn", "<cmd>Telekasten find_notes<CR>", params)
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>fd", "<cmd>Telekasten find_daily_notes<CR>", params)

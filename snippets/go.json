@@ -1,0 +1,9 @@
+{
+  "if-err": {
+    "prefix": "if-err",
+    "body": [
+      "if err != nil {\n\treturn ${1:val}, fmt.Errorf(\"${2:message}: %w\", err)\n}"
+    ],
+    "description": "Check for error"
+ }
+}
